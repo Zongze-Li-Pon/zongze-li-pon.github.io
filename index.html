@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Welcome to Zongze's World </title>
+    <title>Welcome to Zongze's World</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,42 +12,73 @@
             background-color: #f9f9f9;
             color: #333;
         }
-        h1, h2 {
+        h1 {
             color: #007acc;
+            text-align: center;
+        }
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .nav a {
+            background-color: #007acc;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        .nav a:hover {
+            background-color: #005f99;
+        }
+        .featured {
+            margin-top: 40px;
+            text-align: center;
         }
         img, video {
             max-width: 100%;
-            display: block;
             margin: 20px 0;
+            border-radius: 8px;
         }
-        .footer {
-            margin-top: 50px;
-            font-size: 0.9em;
-            color: #888;
+        footer {
             text-align: center;
+            color: #888;
+            font-size: 0.9em;
+            margin: 50px 0 10px 0;
         }
     </style>
 </head>
 <body>
 
-    <h1>Hello, I’m Zongze!</h1>
-    <p>Welcome to my personal homepage. Below are some of my projects and works.</p>
+    <h1>Welcome to Zongze Li's Homepage</h1>
+    <p style="text-align:center;">A collection of my projects, articles, and research.</p>
 
-    <h2>📷 Image Example</h2>
-    <img src="example.jpg" alt="Example Image">
-
-    <h2>🎬 Video Example</h2>
-    <video controls>
-        <source src="video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <h2>🎞️ GIF Example</h2>
-    <img src="animation.gif" alt="Example GIF">
-
-    <div class="footer">
-        © 2025 Zongze Li. All rights reserved.
+    <div class="nav">
+        <a href="about/index.html">About Me</a>
+        <a href="ongoing/index.html">Ongoing Projects</a>
+        <a href="completed/index.html">Completed Projects</a>
+        <a href="articles/index.html">Articles</a>
+        <a href="publications/index.html">Publications</a>
     </div>
+
+    <div class="featured">
+        <h2>🌟 Featured Project</h2>
+        <p>Here's one of my recent projects in action:</p>
+        <img src="assets/featured.gif" alt="Featured Project GIF">
+        <!-- 或用视频 -->
+        <!--
+        <video controls>
+            <source src="assets/demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        -->
+    </div>
+
+    <footer>
+        © 2025 Zongze Li. All rights reserved.
+    </footer>
 
 </body>
 </html>
