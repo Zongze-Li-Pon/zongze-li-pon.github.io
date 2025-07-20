@@ -2,83 +2,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Zongze's World</title>
+    <title>Zongze Li | Personal Homepage</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background-color: #f9f9f9;
+            margin: 0;
+            background-color: #f5f5f5;
             color: #333;
         }
-        h1 {
-            color: #007acc;
-            text-align: center;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
         }
-        .nav {
+        .top-section {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            margin: 30px 0;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
-        .nav a {
+        .left-panel, .right-panel {
+            flex: 1;
+            padding: 30px;
+            min-width: 300px;
+        }
+        .left-panel img {
+            max-width: 180px;
+            border-radius: 50%;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
             background-color: #007acc;
             color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            margin: 10px;
+            padding: 10px 20px;
             border-radius: 8px;
+            text-decoration: none;
+            margin-top: 10px;
         }
-        .nav a:hover {
+        .button:hover {
             background-color: #005f99;
         }
-        .featured {
+        .section-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+            border-bottom: 2px solid #007acc;
+            display: inline-block;
+        }
+        .social-links a {
+            display: block;
+            margin: 5px 0;
+            color: #007acc;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        .nav-buttons a {
+            display: inline-block;
+            background-color: #007acc;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 5px 0 0;
+            text-decoration: none;
+        }
+        .nav-buttons a:hover {
+            background-color: #005f99;
+        }
+        .bottom-section {
             margin-top: 40px;
             text-align: center;
         }
-        img, video {
-            max-width: 100%;
-            margin: 20px 0;
+        .bottom-section img, .bottom-section video {
+            max-width: 90%;
             border-radius: 8px;
-        }
-        footer {
-            text-align: center;
-            color: #888;
-            font-size: 0.9em;
-            margin: 50px 0 10px 0;
         }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to Zongze Li's Homepage</h1>
-    <p style="text-align:center;">A collection of my projects, articles, and research.</p>
+<div class="container">
 
-    <div class="nav">
-        <a href="about/index.html">About Me</a>
-        <a href="ongoing/index.html">Ongoing Projects</a>
-        <a href="completed/index.html">Completed Projects</a>
-        <a href="articles/index.html">Articles</a>
-        <a href="publications/index.html">Publications</a>
-    </div>
+    <div class="top-section">
+        <div class="left-panel">
+            <img src="assets/your-photo.jpg" alt="Your Photo">
+            <h1>Zongze Li</h1>
+            <p>Ph.D. researcher in Fluid Mechanics and Computational Physics. Passionate about open-source, simulations, and system automation.</p>
+            <a href="assets/resume.pdf" class="button" target="_blank">Download Resume</a>
+        </div>
 
-    <div class="featured">
-        <h2>🌟 Featured Project</h2>
-        <p>Here's one of my recent projects in action:</p>
-        <img src="assets/featured.gif" alt="Featured Project GIF">
-        <!-- 或用视频 -->
-        <!--
-        <video controls>
-            <source src="assets/demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        -->
-    </div>
+        <div class="right-panel">
+            <div class="section-title">Skills</div>
+            <ul>
+                <li>Computational Fluid Dynamics (CFD)</li>
+                <li>Python / MATLAB / C++</li>
+                <li>High Performance Computing (HPC)</li>
+                <li>Linux / Git / Automation</li>
+            </ul>
 
-    <footer>
-        © 2025 Zongze Li. All rights reserved.
-    </footer>
-
-</body>
-</html>
+            <div class="section-title">Social</div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/">LinkedIn</a>
+                <a href="https://scholar.google.com/">Google Scholar</a>
+                <a href=
