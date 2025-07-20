@@ -37,6 +37,14 @@
             padding: 30px; /* 内边距 */
             min-width: 300px; /* 每栏最小宽度 300 像素 */
         }
+        
+        /* 左侧头像样式 */
+        .left-panel img {
+            max-width: 180px; /* 头像最大宽度 180 像素 */
+            border-radius: 50%; /* 圆形头像 */
+            display: block; /* 单独占一行 */
+            margin-bottom: 20px; /* 与下方文字间距 */
+        }
 
         /* 简历下载按钮 */
         .button {
@@ -49,14 +57,6 @@
             margin-top: 10px; /* 顶部间距 */
         }
         
-        /* 左侧头像样式 */
-        .left-panel img {
-            max-width: 180px; /* 头像最大宽度 180 像素 */
-            border-radius: 50%; /* 圆形头像 */
-            display: block; /* 单独占一行 */
-            margin-bottom: 20px; /* 与下方文字间距 */
-        }
-
         /* 鼠标悬停时按钮变色 */
         .button:hover {
             background-color: #005f99; /* 深蓝色 */
@@ -114,18 +114,16 @@
     </style>
 </head>
 
-<!-- 页面主体 -->
+<!-- 页面主体：内容的填充 -->
 <body>
-
 <!-- 页面主容器 -->
 <div class="container">
-
     <!-- 上半部分：左右布局 -->
     <div class="top-section">
 
         <!-- 左侧：头像+简介+简历下载 -->
         <div class="left-panel">
-            <img src="assets/your-photo.jpg" alt="Your Photo"> <!-- 头像 -->
+            <img src="assets/your-photo.jpg" alt="Profile Picture"> <!-- 头像 -->
             <h1>Zongze Li</h1> <!-- 你的名字 -->
             <p>Ph.D. researcher in Fluid Mechanics and Computational Physics. Passionate about open-source, simulations, and system automation.</p> <!-- 简短介绍 -->
             <a href="assets/resume.pdf" class="button" target="_blank">Download Resume</a> <!-- 简历下载按钮 -->
