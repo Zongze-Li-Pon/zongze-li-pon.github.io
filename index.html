@@ -1,67 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- 声明这是HTML5文档 -->
+<html lang="en"> <!-- 网页语言为英文 -->
 <head>
-    <meta charset="UTF-8">
-    <title>Zongze Li | Personal Homepage</title>
+    <meta charset="UTF-8"> <!-- 网页编码为UTF-8，支持多语言 -->
+    <title>Zongze Li | Personal Website</title> <!-- 浏览器标签上的标题 -->
+
+    <!-- 网页的样式 -->
     <style>
+        /* 整个网页的基础样式 */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: Arial, sans-serif; /* 网页字体 */
+            margin: 0; /* 去除页面四周默认空白 */
+            background-color: #f5f5f5; /* 背景浅灰色 */
+            color: #333; /* 默认文字颜色为深灰色 */
         }
+
+        /* 页面主内容容器 */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px;
+            max-width: 1200px; /* 页面最大宽度 1200 像素 */
+            margin: 0 auto; /* 水平居中 */
+            padding: 30px; /* 内容与边框间距 30 像素 */
         }
+
+        /* 页面上半部分：左右分栏区域 */
         .top-section {
-            display: flex;
-            flex-wrap: wrap;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            overflow: hidden;
+            display: flex; /* 使用 Flexbox 横向排列子元素 */
+            flex-wrap: wrap; /* 如果屏幕小会自动换行 */
+            background-color: #ffffff; /* 背景为白色 */
+            border-radius: 10px; /* 四个角圆角 10 像素 */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 添加柔和的阴影 */
+            overflow: hidden; /* 内容超出时隐藏 */
         }
+
+        /* 左右两栏的共同样式 */
         .left-panel, .right-panel {
-            flex: 1;
-            padding: 30px;
-            min-width: 300px;
+            flex: 1; /* 左右两栏平均分配宽度 */
+            padding: 30px; /* 内边距 */
+            min-width: 300px; /* 每栏最小宽度 300 像素 */
         }
-        .left-panel img {
-            max-width: 180px;
-            border-radius: 50%;
-            display: block;
-            margin-bottom: 20px;
-        }
+
+        /* 简历下载按钮 */
         .button {
-            display: inline-block;
-            background-color: #007acc;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin-top: 10px;
+            display: inline-block; /* 按钮样式 */
+            background-color: #007acc; /* 按钮背景蓝色 */
+            color: white; /* 文字白色 */
+            padding: 10px 20px; /* 按钮内边距 */
+            border-radius: 8px; /* 按钮圆角 */
+            text-decoration: none; /* 去掉超链接下划线 */
+            margin-top: 10px; /* 顶部间距 */
         }
+        
+        /* 左侧头像样式 */
+        .left-panel img {
+            max-width: 180px; /* 头像最大宽度 180 像素 */
+            border-radius: 50%; /* 圆形头像 */
+            display: block; /* 单独占一行 */
+            margin-bottom: 20px; /* 与下方文字间距 */
+        }
+
+        /* 鼠标悬停时按钮变色 */
         .button:hover {
-            background-color: #005f99;
+            background-color: #005f99; /* 深蓝色 */
         }
+
+        /* 小标题样式（Skills、Social等） */
         .section-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-top: 20px;
-            border-bottom: 2px solid #007acc;
-            display: inline-block;
+            font-size: 1.2em; /* 字体稍大 */
+            font-weight: bold; /* 加粗 */
+            margin-top: 20px; /* 顶部间距 */
+            border-bottom: 2px solid #007acc; /* 底部有蓝色横线 */
+            display: inline-block; /* 根据内容宽度显示 */
         }
+
+        /* 社交链接 */
         .social-links a {
-            display: block;
-            margin: 5px 0;
-            color: #007acc;
-            text-decoration: none;
+            display: block; /* 每个链接单独一行 */
+            margin: 5px 0; /* 上下间距 */
+            color: #007acc; /* 蓝色链接 */
+            text-decoration: none; /* 去掉下划线 */
         }
+
+        /* 鼠标悬停时添加下划线 */
         .social-links a:hover {
             text-decoration: underline;
         }
+
+        /* 导航按钮（跳转到各个页面的按钮） */
         .nav-buttons a {
             display: inline-block;
             background-color: #007acc;
@@ -71,32 +94,47 @@
             margin: 10px 5px 0 0;
             text-decoration: none;
         }
+
+        /* 导航按钮悬停时变色 */
         .nav-buttons a:hover {
             background-color: #005f99;
         }
+
+        /* 页面下半部分：项目展示区 */
         .bottom-section {
-            margin-top: 40px;
-            text-align: center;
+            margin-top: 40px; /* 与上方保持间距 */
+            text-align: center; /* 内容居中 */
         }
+
+        /* 底部图片/视频展示样式 */
         .bottom-section img, .bottom-section video {
-            max-width: 90%;
-            border-radius: 8px;
+            max-width: 90%; /* 宽度不超过页面90% */
+            border-radius: 8px; /* 图片/视频四角圆角 */
         }
     </style>
 </head>
+
+<!-- 页面主体 -->
 <body>
 
+<!-- 页面主容器 -->
 <div class="container">
 
+    <!-- 上半部分：左右布局 -->
     <div class="top-section">
+
+        <!-- 左侧：头像+简介+简历下载 -->
         <div class="left-panel">
-            <img src="assets/your-photo.jpg" alt="Your Photo">
-            <h1>Zongze Li</h1>
-            <p>Ph.D. researcher in Fluid Mechanics and Computational Physics. Passionate about open-source, simulations, and system automation.</p>
-            <a href="assets/resume.pdf" class="button" target="_blank">Download Resume</a>
+            <img src="assets/your-photo.jpg" alt="Your Photo"> <!-- 头像 -->
+            <h1>Zongze Li</h1> <!-- 你的名字 -->
+            <p>Ph.D. researcher in Fluid Mechanics and Computational Physics. Passionate about open-source, simulations, and system automation.</p> <!-- 简短介绍 -->
+            <a href="assets/resume.pdf" class="button" target="_blank">Download Resume</a> <!-- 简历下载按钮 -->
         </div>
 
+        <!-- 右侧：技能+社交链接+导航 -->
         <div class="right-panel">
+
+            <!-- 技能 -->
             <div class="section-title">Skills</div>
             <ul>
                 <li>Computational Fluid Dynamics (CFD)</li>
@@ -105,6 +143,7 @@
                 <li>Linux / Git / Automation</li>
             </ul>
 
+            <!-- 社交链接 -->
             <div class="section-title">Social</div>
             <div class="social-links">
                 <a href="https://www.linkedin.com/">LinkedIn</a>
@@ -112,6 +151,7 @@
                 <a href="https://github.com/">GitHub</a>
             </div>
 
+            <!-- 网站导航按钮 -->
             <div class="section-title">Navigation</div>
             <div class="nav-buttons">
                 <a href="ongoing/index.html">Ongoing Projects</a>
@@ -119,14 +159,16 @@
                 <a href="articles/index.html">Articles</a>
                 <a href="publications/index.html">Publications</a>
             </div>
+
         </div>
     </div>
 
+    <!-- 下半部分：GIF或视频展示 -->
     <div class="bottom-section">
         <h2>🌟 Featured Projects</h2>
         <p>Check out some of my ongoing research and recent work below:</p>
         <img src="assets/featured.gif" alt="Featured Project GIF">
-        <!-- 或用视频 -->
+        <!-- 可替换为视频展示 -->
         <!--
         <video controls>
             <source src="assets/demo.mp4" type="video/mp4">
