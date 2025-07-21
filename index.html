@@ -22,32 +22,6 @@
             padding: 30px;
         }
 
-        .top-section {
-            display: flex;
-            flex-wrap: wrap;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .left-panel h1 {
-            text-align: center;
-        }
-
-        .left-panel, .right-panel {
-            flex: 1;
-            padding: 30px;
-            min-width: 300px;
-        }
-
-        .left-panel img {
-            max-width: 180px;
-            border-radius: 8px;
-            display: block;
-            margin: 0 auto 20px auto;
-        }
-
         .button {
             display: inline-block;
             justify-content: center;
@@ -60,6 +34,27 @@
         }
 
         .button:hover {
+            background-color: #005f99;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-buttons a {
+            display: inline-block;
+            background-color: #007acc;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0 0 0;
+            text-decoration: none;
+        }
+
+        .nav-buttons a:hover {
             background-color: #005f99;
         }
 
@@ -87,27 +82,32 @@
             text-decoration: underline;
         }
 
-        .nav-buttons {
+        .top-section {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-        .nav-buttons a {
-            display: inline-block;
-            background-color: #007acc;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin: 10px 0 0 0;
-            text-decoration: none;
+        .left-panel h1 {
+            text-align: center;
         }
 
-        .nav-buttons a:hover {
-            background-color: #005f99;
+        .left-panel, .right-panel {
+            flex: 1;
+            padding: 30px;
+            min-width: 300px;
         }
 
+        .left-panel img {
+            max-width: 180px;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+        
         .bottom-section {
             margin-top: 40px;
             text-align: center;
