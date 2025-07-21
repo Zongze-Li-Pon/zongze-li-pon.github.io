@@ -1,8 +1,8 @@
-<!DOCTYPE html> <!-- 声明这是HTML5文档 -->
-<html lang="en"> <!-- 网页语言为英文 -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- 网页编码为UTF-8，支持多语言 -->
-    <title>Zongze Li | Personal Website</title> <!-- 浏览器标签上的标题 -->
+    <meta charset="UTF-8">
+    <title>Zongze Li | Personal Website</title>
 
     <style>
         body {
@@ -22,18 +22,19 @@
             padding: 30px;
         }
 
-        .button {
+        .button-common {
             display: inline-block;
-            justify-content: center;
             background-color: #007acc;
             color: white;
             padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
-            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 5px 0 0;
         }
 
-        .button:hover {
+        .button-common:hover {
             background-color: #005f99;
         }
 
@@ -42,20 +43,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-        }
-
-        .nav-buttons a {
-            display: inline-block;
-            background-color: #007acc;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin: 10px 0 0 0;
-            text-decoration: none;
-        }
-
-        .nav-buttons a:hover {
-            background-color: #005f99;
+            margin-top: 20px;
         }
 
         .section-title {
@@ -130,35 +118,25 @@
                 <h1>Zongze Li</h1>
 
                 <p><strong>About Me:</strong></p>
-                <p>Hello! thank you for visiting my website! I am a mechanical engineer and Ph.D. 
-                   with a strong background in computational modeling, algorithm development, and 
-                   fluid-structure interaction (FSI). My expertise focuses on building efficient 
-                   simulation tools using CFD, LBM, C++, and MATLAB to solve complex real-world 
-                   problems across engineering and biomedical fields.</p>
-                <p>Outside of research, I’m passionate about technology and lifelong learning. I 
-                   enjoy exploring new technologies and applying them in real life—from building 
-                   personal servers and cloud storage solutions (Samba, NAS) to experimenting with 
-                   AI tools that enhance productivity and problem-solving. This curiosity and 
-                   hands-on mindset have driven me to develop skills beyond my academic field, 
-                   preparing me for roles in software engineering and system development.</p>
-                <p>I believe in sharing knowledge and collaboration, which has led me to work as a 
-                   workshop lecturer and peer reviewer in the CFD community. Whether in engineering
-                   , coding, or cloud infrastructure, I’m always eager to learn, build, and help 
-                   solve meaningful problems.</p>
+                <p>Hello! Thank you for visiting my website! I am a mechanical engineer and Ph.D. with a strong background in computational modeling, algorithm development, and fluid-structure interaction (FSI). My expertise focuses on building efficient simulation tools using CFD, LBM, C++, and MATLAB to solve complex real-world problems across engineering and biomedical fields.</p>
+                <p>Outside of research, I’m passionate about technology and lifelong learning. I enjoy exploring new technologies and applying them in real life—from building personal servers and cloud storage solutions (Samba, NAS) to experimenting with AI tools that enhance productivity and problem-solving. This curiosity and hands-on mindset have driven me to develop skills beyond my academic field, preparing me for roles in software engineering and system development.</p>
+                <p>I believe in sharing knowledge and collaboration, which has led me to work as a workshop lecturer and peer reviewer in the CFD community. Whether in engineering, coding, or cloud infrastructure, I’m always eager to learn, build, and help solve meaningful problems.</p>
 
-                <a style="text-align: center;" href="assets/resume-website.pdf" class="button" target="_blank">Download Resume</a>
+                <div style="text-align: center;">
+                    <a href="assets/resume-website.pdf" class="button-common" target="_blank">
+                        Download Resume
+                    </a>
+                </div>
             </div>
 
             <div class="right-panel">
 
                 <div class="section-title">SKILLS</div>
                 <p style="text-align: center;"><strong>Modeling</strong></p>
-                <p>ANSYS, COMSOL, Computational Fluid Dynamics (CFD), Finite Element Method (FEM), 
-                   Fluid-Solid Interaction (FSI), FLUENT, Lattice Boltzmann Method (LBM), Palabos</p>
+                <p>ANSYS, COMSOL, CFD, FEM, FSI, FLUENT, LBM, Palabos</p>
                 <p style="text-align: center;"><strong>Programming</strong></p>
-                <p>Algorithm Development, C++, HTML, JAVA, Linux, Microsoft Visual Studio, MATLAB, 
-                   Message Passing Interface (MPI), Python</p>
-                <p style="text-align: center;"><strong>Geometry design and processing</strong></p>
+                <p>Algorithm Development, C++, HTML, JAVA, Linux, Visual Studio, MATLAB, MPI, Python</p>
+                <p style="text-align: center;"><strong>Geometry Design and Processing</strong></p>
                 <p>Adobe, AutoCAD, Blender, ImageJ, MeshLab, Paraview, SolidWorks</p>
                 <p style="text-align: center;"><strong>Laboratory</strong></p>
                 <p>2D Laser Cutting, 3D Printing, Particle Image Velocimetry (PIV)</p>
@@ -166,28 +144,25 @@
                 <div class="section-title">SOCIAL LINKS</div>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/zongze-li-59513491/" target="_blank">
-                        <img src="assets/linkedin-icon.svg" alt="LinkedIn" 
-                            style="height:24px; vertical-align: middle; margin-right: 5px;">
+                        <img src="assets/linkedin-icon.svg" alt="LinkedIn" style="height:24px; margin-right:5px;">
                         LinkedIn
                     </a>
                     <a href="https://scholar.google.com/citations?user=CGlqNYgAAAAJ&hl=en" target="_blank">
-                        <img src="assets/google-scholar-logo.svg" alt="Google Scholar" 
-                            style="height:24px; vertical-align: middle; margin-right: 5px;">
+                        <img src="assets/google-scholar-logo.svg" alt="Google Scholar" style="height:24px; margin-right:5px;">
                         Google Scholar
                     </a>
                     <a href="https://github.com/Zongze-Li-Pon" target="_blank">
-                        <img src="assets/github-Invertocat-Logo.svg" alt="GitHub" 
-                            style="height:24px; vertical-align: middle; margin-right: 5px;">
+                        <img src="assets/github-Invertocat-Logo.svg" alt="GitHub" style="height:24px; margin-right:5px;">
                         GitHub
                     </a>
                 </div>
 
                 <div class="section-title">EXPLORE MY WORK</div>
                 <div class="nav-buttons">
-                    <a href="ongoing/index.html">Ongoing Projects</a>
-                    <a href="completed/index.html">Completed Projects</a>
-                    <a href="blog/index.html">Technical Blog</a>
-                    <a href="publications/index.html">Publications</a>
+                    <a href="ongoing/index.html" class="button-common">Ongoing Projects</a>
+                    <a href="completed/index.html" class="button-common">Completed Projects</a>
+                    <a href="blog/index.html" class="button-common">Technical Blog</a>
+                    <a href="publications/index.html" class="button-common">Publications</a>
                 </div>
 
             </div>
