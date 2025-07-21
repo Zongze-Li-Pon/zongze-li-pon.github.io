@@ -4,95 +4,84 @@
     <meta charset="UTF-8"> <!-- 网页编码为UTF-8，支持多语言 -->
     <title>Zongze Li | Personal Website</title> <!-- 浏览器标签上的标题 -->
 
-    <!-- 网页的样式 -->
     <style>
-        /* 整个网页的基础样式 */
         body {
-            font-family: Arial, sans-serif; /* 网页字体 */
-            margin: 0; /* 去除页面四周默认空白 */
-            background-color: #f5f5f5; /* 背景浅灰色 */
-            color: #333; /* 默认文字颜色为深灰色 */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
         }
-        
+
         p {
-            text-align: justify;  /* 段落文字两端对齐 */
+            text-align: justify;
         }
-        
-        /* 页面主内容容器 */
+
         .container {
-            max-width: 1200px; /* 页面最大宽度 1200 像素 */
-            margin: 0 auto; /* 水平居中 */
-            padding: 30px; /* 内容与边框间距 30 像素 */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
         }
 
-        /* 页面上半部分：左右分栏区域 */
         .top-section {
-            display: flex; /* 使用 Flexbox 横向排列子元素 */
-            flex-wrap: wrap; /* 如果屏幕小会自动换行 */
-            background-color: #ffffff; /* 背景为白色 */
-            border-radius: 10px; /* 四个角圆角 10 像素 */
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 添加柔和的阴影 */
-            overflow: hidden; /* 内容超出时隐藏 */
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-		.left-panel h1 {
-			text-align: center; /* 让名字居中 */
-		}
-		
-        /* 左右两栏的共同样式 */
+        .left-panel h1 {
+            text-align: center;
+        }
+
         .left-panel, .right-panel {
-            flex: 1; /* 左右两栏平均分配宽度 */
-            padding: 30px; /* 内边距 */
-            min-width: 300px; /* 每栏最小宽度 300 像素 */
+            flex: 1;
+            padding: 30px;
+            min-width: 300px;
         }
-        
-        /* 左侧头像样式 */
+
         .left-panel img {
-            max-width: 180px; /* 头像最大宽度 180 像素 */
-			border-radius: 8px;     /* 方形头像 + 轻微圆角效果（可选）*/
-            display: block; /* 单独占一行 */
-            margin: 0 auto 20px auto; /* 图片水平居中（上下间距+自动左右外边距）*/
+            max-width: 180px;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 20px auto;
         }
 
-        /* 简历下载按钮 */
         .button {
-            display: inline-block; /* 按钮样式 */
-            background-color: #007acc; /* 按钮背景蓝色 */
-            color: white; /* 文字白色 */
-            padding: 10px 20px; /* 按钮内边距 */
-            border-radius: 8px; /* 按钮圆角 */
-            text-decoration: none; /* 去掉超链接下划线 */
-            margin-top: 10px; /* 顶部间距 */
+            display: inline-block;
+            background-color: #007acc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 10px;
         }
-        
-        /* 鼠标悬停时按钮变色 */
+
         .button:hover {
-            background-color: #005f99; /* 深蓝色 */
+            background-color: #005f99;
         }
 
-        /* 小标题样式（Skills、Social等） */
         .section-title {
-            font-size: 1.2em; /* 字体稍大 */
-            font-weight: bold; /* 加粗 */
-            margin-top: 20px; /* 顶部间距 */
-            border-bottom: 2px solid #007acc; /* 底部有蓝色横线 */
-            display: inline-block; /* 根据内容宽度显示 */
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+            border-bottom: 2px solid #007acc;
+            display: inline-block;
         }
 
-        /* 社交链接 */
         .social-links a {
-            display: inline-flex;     /* 横向排列 */
-            margin: 5px 0; /* 上下间距 */
-            color: #007acc; /* 蓝色链接 */
-            text-decoration: none; /* 去掉下划线 */
+            display: inline-flex;
+            align-items: center;
+            margin: 5px 10px 5px 0;
+            color: #007acc;
+            text-decoration: none;
         }
 
-        /* 鼠标悬停时添加下划线 */
         .social-links a:hover {
             text-decoration: underline;
         }
 
-        /* 导航按钮（跳转到各个页面的按钮） */
         .nav-buttons a {
             display: inline-block;
             background-color: #007acc;
@@ -103,112 +92,92 @@
             text-decoration: none;
         }
 
-        /* 导航按钮悬停时变色 */
         .nav-buttons a:hover {
             background-color: #005f99;
         }
 
-        /* 页面下半部分：项目展示区 */
         .bottom-section {
-            margin-top: 40px; /* 与上方保持间距 */
-            text-align: center; /* 内容居中 */
+            margin-top: 40px;
+            text-align: center;
         }
 
-        /* 底部图片/视频展示样式 */
         .bottom-section img, .bottom-section video {
-            max-width: 90%; /* 宽度不超过页面90% */
-            border-radius: 8px; /* 图片/视频四角圆角 */
+            max-width: 90%;
+            border-radius: 8px;
         }
     </style>
 </head>
 
-<!-- 页面主体：内容的填充 -->
 <body>
-<!-- 页面主容器 -->
-<div class="container">
-    <!-- 上半部分：左右布局 -->
-    <div class="top-section">
+    <div class="container">
 
-        <!-- 左侧：头像+简介+简历下载 -->
-        <div class="left-panel">
-            <img src="assets/profile-picture.jpg" alt="Profile Picture"> <!-- 头像 -->
-            <h1>Zongze Li</h1> <!-- 你的名字 -->
-            <p><strong>About Me:</strong></p>
-            <p>I’m Zongze Li, a mechanical engineer and Ph.D. with a strong background in 
-			   computational modeling, algorithm development, and fluid-structure interaction 
-			   (FSI). My expertise focuses on building efficient simulation tools using CFD, LBM, 
-			   C++, and MATLAB to solve complex real-world problems across engineering and 
-			   biomedical fields.
-			</p>
-			<p>Outside of research, I’m passionate about technology and lifelong learning. I enjoy 
-			exploring new technologies and applying them in real life—from building personal 
-			servers and cloud storage solutions (Samba, NAS) to experimenting with AI tools that 
-			enhance productivity and problem-solving. This curiosity and hands-on mindset have 
-			driven me to develop skills beyond my academic field, preparing me for roles in 
-			software engineering and system development.
-			</p>
-			<p>I believe in sharing knowledge and collaboration, which has led me to work as a 
-			   workshop lecturer and peer reviewer in the CFD community. Whether in engineering, 
-			   coding, or cloud infrastructure, I’m always eager to learn, build, and help solve 
-			   meaningful problems.
-			</p> <!-- 简短介绍 -->
-            <a href="assets/resume-website.pdf" class="button" target="_blank">Download Resume</a> <!-- 简历下载按钮 -->
-        </div>
+        <div class="top-section">
 
-        <!-- 右侧：技能+社交链接+导航 -->
-        <div class="right-panel">
+            <div class="left-panel">
+                <img src="assets/profile-picture.jpg" alt="Profile Picture">
+                <h1>Zongze Li</h1>
 
-            <!-- 技能 -->
-            <div class="section-title">SKILLS</div>
-            <p><strong>Modeling:</strong> ANSYS, COMSOL, Computational Fluid Dynamics (CFD), Finite Element Method (FEM), Fluid-Solid Interaction (FSI), FLUENT, Lattice Boltzmann Method (LBM), Palabos</p>
-            <p><strong>Programming:</strong> Algorithm Development, C++, Linux, Microsoft Visual Studio, MATLAB, Message Passing Interface (MPI), Python</p>
-            <p><strong>Geometry design and processing:</strong> Adobe, AutoCAD, Blender, ImageJ, MeshLab, Paraview, SolidWorks</p>
-            <p><strong>Laboratory:</strong> 2D Laser Cutting, 3D Printing, Particle Image Velocimetry (PIV)</p>
-            
-			<!-- 社交链接 -->
-			<div class="section-title">SOCIAL LINKS</div>
-            <div class="social-links">
-			<a href="https://www.linkedin.com/in/zongze-li-59513491/" target="_blank">
-				<img src="assets/linkedin-icon.svg" alt="LinkedIn" style="height:24px; vertical-align: middle;">
-				LinkedIn
-			</a>
-			<a href="https://scholar.google.com/citations?user=CGlqNYgAAAAJ&hl=en" target="_blank">
-				<img src="assets/google-scholar-logo.svg" alt="Google Scholar" style="height:24px; vertical-align: middle;">
-				Google Scholar
-			</a>
-			<a href="https://github.com/Zongze-Li-Pon" target="_blank">
-				<img src="assets/github-Invertocat-Logo.svg" alt="GitHub" style="height:24px; vertical-align: middle;">
-				GitHub
-			</a>
-			</div>
+                <p><strong>About Me:</strong></p>
+                <p>Hello! thank you for visiting my website! I am a mechanical engineer and Ph.D. 
+                   with a strong background in computational modeling, algorithm development, and 
+                   fluid-structure interaction (FSI). My expertise focuses on building efficient 
+                   simulation tools using CFD, LBM, C++, and MATLAB to solve complex real-world 
+                   problems across engineering and biomedical fields.</p>
+                <p>Outside of research, I’m passionate about technology and lifelong learning. I 
+                   enjoy exploring new technologies and applying them in real life—from building 
+                   personal servers and cloud storage solutions (Samba, NAS) to experimenting with 
+                   AI tools that enhance productivity and problem-solving. This curiosity and 
+                   hands-on mindset have driven me to develop skills beyond my academic field, 
+                   preparing me for roles in software engineering and system development.</p>
+                <p>I believe in sharing knowledge and collaboration, which has led me to work as a 
+                   workshop lecturer and peer reviewer in the CFD community. Whether in engineering
+                   , coding, or cloud infrastructure, I’m always eager to learn, build, and help 
+                   solve meaningful problems.</p>
 
-            <!-- 网站导航按钮 -->
-            <div class="section-title">Navigation</div>
-            <div class="nav-buttons">
-                <a href="ongoing/index.html">Ongoing Projects</a>
-                <a href="completed/index.html">Completed Projects</a>
-                <a href="articles/index.html">Articles</a>
-                <a href="publications/index.html">Publications</a>
+                <a href="assets/resume-website.pdf" class="button" target="_blank">Download Resume</a>
             </div>
 
+            <div class="right-panel">
+
+                <div class="section-title">SKILLS</div>
+                <p><strong>Modeling:</strong> ANSYS, COMSOL, Computational Fluid Dynamics (CFD), Finite Element Method (FEM), Fluid-Solid Interaction (FSI), FLUENT, Lattice Boltzmann Method (LBM), Palabos</p>
+                <p><strong>Programming:</strong> Algorithm Development, C++, Linux, Microsoft Visual Studio, MATLAB, Message Passing Interface (MPI), Python</p>
+                <p><strong>Geometry design and processing:</strong> Adobe, AutoCAD, Blender, ImageJ, MeshLab, Paraview, SolidWorks</p>
+                <p><strong>Laboratory:</strong> 2D Laser Cutting, 3D Printing, Particle Image Velocimetry (PIV)</p>
+
+                <div class="section-title">SOCIAL LINKS</div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/zongze-li-59513491/" target="_blank">
+                        <img src="assets/linkedin-icon.svg" alt="LinkedIn" style="height:24px; vertical-align: middle; margin-right: 5px;">
+                        LinkedIn
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=CGlqNYgAAAAJ&hl=en" target="_blank">
+                        <img src="assets/google-scholar-logo.svg" alt="Google Scholar" style="height:24px; vertical-align: middle; margin-right: 5px;">
+                        Google Scholar
+                    </a>
+                    <a href="https://github.com/Zongze-Li-Pon" target="_blank">
+                        <img src="assets/github-Invertocat-Logo.svg" alt="GitHub" style="height:24px; vertical-align: middle; margin-right: 5px;">
+                        GitHub
+                    </a>
+                </div>
+
+                <div class="section-title">Navigation</div>
+                <div class="nav-buttons">
+                    <a href="ongoing/index.html">Ongoing Projects</a>
+                    <a href="completed/index.html">Completed Projects</a>
+                    <a href="articles/index.html">Articles</a>
+                    <a href="publications/index.html">Publications</a>
+                </div>
+
+            </div>
         </div>
+
+        <div class="bottom-section">
+            <h2>🌟 Featured Projects</h2>
+            <p>Check out some of my ongoing research and recent work below:</p>
+            <img src="assets/featured.gif" alt="Featured Project GIF">
+        </div>
+
     </div>
-
-    <!-- 下半部分：GIF或视频展示 -->
-    <div class="bottom-section">
-        <h2>🌟 Featured Projects</h2>
-        <p>Check out some of my ongoing research and recent work below:</p>
-        <img src="assets/featured.gif" alt="Featured Project GIF">
-        <!-- 可替换为视频展示 -->
-        <!--
-        <video controls>
-            <source src="assets/demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        -->
-    </div>
-
-</div>
-
 </body>
 </html>
