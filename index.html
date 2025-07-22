@@ -33,6 +33,13 @@
             text-align: center;
         }
 
+        .vertical-section {
+            display: flex;
+            flex-direction: column;   /* 垂直排列 */
+            align-items: center;       /* （可选）内容居中对齐 */
+            gap: 20px;                 /* 图片块之间的间距 */
+        }
+
         .left-panel, .right-panel {
             flex: 1;
             padding: 30px;
@@ -212,24 +219,26 @@
                     <div class="label">Side view</div>
                 </div>
             
-                <!-- 中间箭头及文字 -->
+                <!-- Arrow -->
                 <div class="arrow-section">
                     <div class="label">Motion Capture, Mesh Reconstruction, and FSI Modeling</div>
                     <div class="arrow">➔</div>
                 </div>
             
-                <!-- 右侧三个GIF -->
-                <div class="img-section">
-                    <img src="assets/featured-works/sea-butterfly/velocity-field.gif" alt="Velocity field GIF">
-                    <div class="label">Velocity field</div>
-                </div>
-                <div class="img-section">
-                    <img src="assets/featured-works/sea-butterfly/vorticity-field.gif" alt="Vorticity field GIF">
-                    <div class="label">Vorticity field by Q-criterion</div>
-                </div>
-                <div class="img-section">
-                    <img src="assets/featured-works/sea-butterfly/surface-force.gif" alt="Surface force GIF">
-                    <div class="label">Wing and body force</div>
+                <!-- Result videos -->
+                <div class="vertical-section"> 
+                    <div class="img-section">
+                        <img src="assets/featured-works/sea-butterfly/velocity-field.gif" alt="Velocity field GIF">
+                        <div class="label">Velocity field</div>
+                    </div>
+                    <div class="img-section">
+                        <img src="assets/featured-works/sea-butterfly/vorticity-field.gif" alt="Vorticity field GIF">
+                        <div class="label">Vorticity field by Q-criterion</div>
+                    </div>
+                    <div class="img-section">
+                        <img src="assets/featured-works/sea-butterfly/surface-force.gif" alt="Surface force GIF">
+                        <div class="label">Wing and body force</div>
+                    </div>
                 </div>
             
             </div>
