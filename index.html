@@ -142,7 +142,9 @@
             margin-bottom: 10px;
             text-align: center;
             display: block;
-            width: 100%;
+            width: fit-content;         /* ✅ 只占内容需要的宽度 */
+            max-width: 100%;            /* 避免溢出 */
+            word-wrap: break-word;
             overflow-wrap: break-word;
         }
         
