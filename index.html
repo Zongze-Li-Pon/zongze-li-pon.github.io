@@ -122,11 +122,6 @@
         .img-section img {
             max-width: 180px;
             border-radius: 8px;
-            
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 180px;  /* 或者 90% */
         }
         
         .arrow-section {
@@ -146,11 +141,8 @@
             font-size: 1em;
             margin-bottom: 10px;
             text-align: center;
-            display: block;
-            width: fit-content;         /* ✅ 只占内容需要的宽度 */
-            max-width: 100%;            /* 避免溢出 */
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            max-width: 180px;        /* ✅ 设置最大宽度 */
+            white-space: normal;     /* ✅ 确保允许换行 */
         }
         
     </style>
