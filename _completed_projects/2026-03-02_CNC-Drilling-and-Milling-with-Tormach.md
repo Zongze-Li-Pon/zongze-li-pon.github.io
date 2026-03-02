@@ -14,7 +14,7 @@ Design the artwork → Generate toolpaths (CAM) → CNC machining on Tormach
 ## 1. Design the artwork
 Since I am not a professional designer, I chose my favorite character, Kirby, from Google and converted the image into an .svg file that can be recognized by Autodesk Fusion 360. This conversion was performed using the open-source software Inkscape.
 To prepare the geometry for machining, I filled all enclosed regions that I intended to extrude. Due to tooling limitations (no end mill smaller than 1/8 inch diameter was available at the time), I simplified the geometry by removing fine details, particularly those on Kirby’s face.
-![](/_completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/pre-processing.jpg)
+![](/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/pre-processing.jpg)
 
 ## 2. Generate toolpaths (CAM)
 This step is carried out using Autodesk Fusion 360, which provides an integrated CAD/CAM environment. (Open-source alternatives may also exist, although Fusion 360 was used in this project.)
