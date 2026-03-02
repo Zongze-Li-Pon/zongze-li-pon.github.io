@@ -12,6 +12,9 @@ We are very fortunate to have Dr. Baksh, Nicholas, who is dedicated to providing
 ## 1. Design the artwork
 Since I am not a professional designer, I chose my favorite character, Kirby, from Google and converted the image into an .svg file that can be recognized by Autodesk Fusion 360. This conversion was performed using the open-source software Inkscape.
 To prepare the geometry for machining, I filled all enclosed regions that I intended to extrude. Due to tooling limitations (no end mill smaller than 1/8 inch diameter was available at the time), I simplified the geometry by removing fine details, particularly those on Kirby's face.
+<div style="text-align: center;">
+  <img src="/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/pre-processing.jpg" width="70%">
+</div>
 ![](/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/pre-processing.jpg)
 
 ## 2. Generate toolpaths (CAM)
