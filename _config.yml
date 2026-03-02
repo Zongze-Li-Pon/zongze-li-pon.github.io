@@ -1,0 +1,13 @@
+title: Zongze Li
+markdown: kramdown
+
+collections:
+  completed_projects:
+    output: true
+    permalink: /completed-projects/:name/
+  ongoing_projects:
+    output: true
+    permalink: /ongoing-projects/:name/
+  technical_blog:
+    output: true
+    permalink: /technical-blog/:name/
