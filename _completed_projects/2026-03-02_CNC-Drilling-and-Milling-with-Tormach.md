@@ -15,21 +15,28 @@ To prepare the geometry for machining, I filled all enclosed regions that I inte
 <div style="text-align: center;">
   <img src="/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/pre-processing.jpg" width="70%">
 </div>
-![](/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/pre-processing.jpg)
 
 ## 2. Generate toolpaths (CAM)
 This step is carried out using Autodesk Fusion 360, which provides an integrated CAD/CAM environment. (Open-source alternatives may also exist, although Fusion 360 was used in this project.)
 The workflow begins by defining the stock geometry within the software. The imported .svg file is then positioned on top of the stock, and machining operations (e.g., cutting or extrusion) are defined based on the desired final geometry. After completing these steps, the setup appears as follows:
-![](/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/cad-result.jpg)
+<div style="text-align: center;">
+  <img src="/_completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/cad-result.jpg" width="70%">
+</div>
 
 Next, machine and tooling parameters must be specified. These parameters vary depending on the specific case and include considerations such as tool size, spindle speed, and feed rate. At this stage, it is important to account for the physical limitations of the CNC machine and plan the machining strategy accordingly, including the correct sequence of operations. The setup defined in Fusion 360 closely reflects the real-world configuration of the Tormach machine. A key advantage of this workflow is the built-in simulation feature, which allows verification of the toolpath and helps identify potential issues before actual machining.
-![](/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/sim.gif)
+<div style="text-align: center;">
+  <img src="/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/sim.gif" width="70%">
+</div>
 
 Once the simulation is verified, the G-code can be generated, saved to a USB drive, and transferred to the Tormach machine for execution.
 
 ## 3. CNC machining on Tormach
 The final step is to perform drilling and milling operations on the Tormach machine. This begins with initializing both the hardware and control software, followed by setting up the work coordinate system (zeroing the axes). Once the setup is complete, the machining process can be executed.
-![](/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/machining.gif)
+<div style="text-align: center;">
+  <img src="/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/machining.gif" width="70%">
+</div>
 
 Finally, we have our Kirby on a piece of aluminum.
-![](/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/machining.gif)
+<div style="text-align: center;">
+  <img src="/completed_projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/product.jpg" width="70%">
+</div>
