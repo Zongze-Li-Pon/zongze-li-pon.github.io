@@ -25,50 +25,57 @@ However:
 Result: High computational cost or reduced accuracy in patient-specific simulations.
 
 ## What I Built (Core Contribution)
+
 Designed a fast parameter estimation pipeline with three key components:
-    1. Geometry-aware resistance extraction
-        -Performed steady CFD simulation
-        -Extracted branch-wise geometric resistance (Rg)
-        -Captures real effects of:
-            -complex geometry
-            -bifurcations
-            -stenosis
-    2. Reduced-order circuit modeling
-        -Built a 0D circuit analog coupling:
-            -geometric resistance (Rg)
-            -Windkessel model (Rc, Rp, C)
-    3. Optimization-based parameter estimation
-        -Implemented MATLAB global optimization (pattern search)
-        -Solved WK3 ODE system to match:
-            -systolic / diastolic pressure
-            -flow distribution at outlets
-        -Optimization runtime: < 1 minute
+
+1. Geometry-aware resistance extraction
+   - Performed steady CFD simulation
+   - Extracted branch-wise geometric resistance (Rg)
+   - Captures real effects of:
+     - complex geometry
+     - bifurcations
+     - stenosis
+
+2. Reduced-order circuit modeling
+   - Built a 0D circuit analog coupling:
+     - geometric resistance (Rg)
+     - Windkessel model (Rc, Rp, C)
+
+3. Optimization-based parameter estimation
+   - Implemented MATLAB global optimization (pattern search)
+   - Solved WK3 ODE system to match:
+     - systolic / diastolic pressure
+     - flow distribution at outlets
+   - Optimization runtime: < 1 minute
 
 ## Technical Stack
--CFD Solver: Lattice Boltzmann Method (LBM)
--Framework: C++ + MPI (Palabos-based)
--Optimization: MATLAB Global Optimization Toolbox
--Scale: ~21 million grid points (HPC cluster)
--Physics: Multi-scale coupling (3D CFD + 0D lumped model)
+
+- CFD Solver: Lattice Boltzmann Method (LBM)
+- Framework: C++ + MPI (Palabos-based)
+- Optimization: MATLAB Global Optimization Toolbox
+- Scale: ~21 million grid points (HPC cluster)
+- Physics: Multi-scale coupling (3D CFD + 0D lumped model)
 
 ## Key Results
--Achieved accurate control of flow distribution and pressure waveform
--Pressure prediction error: as low as ~0.4 mmHg 
--Successfully handled: normal geometry, stenosed aorta, non-physiological flow distributions
--Reduced computational cost by:
-    -eliminating iterative CFD loops
-    -using only one steady CFD simulation
+
+- Achieved accurate control of flow distribution and pressure waveform
+- Pressure prediction error: as low as ~0.4 mmHg 
+- Successfully handled: normal geometry, stenosed aorta, non-physiological flow distributions
+- Reduced computational cost by:
+  - eliminating iterative CFD loops
+  - using only one steady CFD simulation
 
 ## Engineering Impact
--Enabled fast and reliable patient-specific simulations
--Improved robustness for:
-    -complex geometries
-    -pathological conditions (e.g., stenosis)
--Provides a scalable workflow for multi-scale modeling
--Applicable to:
-    -biomedical simulation platforms
-    -digital twins in healthcare
-    -simulation-driven diagnosis tools
+
+- Enabled fast and reliable patient-specific simulations
+- Improved robustness for:
+  - complex geometries
+  - pathological conditions (e.g., stenosis)
+- Provides a scalable workflow for multi-scale modeling
+- Applicable to:
+  - biomedical simulation platforms
+  - digital twins in healthcare
+  - simulation-driven diagnosis tools
 
 ## Result Gifs
 <div style="text-align: center;">
