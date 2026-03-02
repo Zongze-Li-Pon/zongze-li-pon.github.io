@@ -13,32 +13,32 @@ This work bridges 3D high-fidelity CFD (LBM) and 0D reduced-order cardiovascular
 ## Problem & Motivation
 Accurate cardiovascular CFD simulations require physiological outlet boundary conditions, typically modeled using Windkessel (WK3) models.
 However:
-	-WK3 parameters (Rc, Rp, C) are case-specific and unknown
-	-Existing methods:
-		-Require iterative CFD simulations (very expensive)
-		-Ignore geometry-induced resistance
-		-Or rely on over-simplified assumptions (e.g., Poiseuille flow)
+    -WK3 parameters (Rc, Rp, C) are case-specific and unknown
+    -Existing methods:
+        -Require iterative CFD simulations (very expensive)
+        -Ignore geometry-induced resistance
+        -Or rely on over-simplified assumptions (e.g., Poiseuille flow)
 Result: High computational cost or reduced accuracy in patient-specific simulations
 
 ## What I Built (Core Contribution)
 Designed a fast parameter estimation pipeline with three key components:
-	1. Geometry-aware resistance extraction
-		-Performed steady CFD simulation
-		-Extracted branch-wise geometric resistance (Rg)
-		-Captures real effects of:
-			-complex geometry
-			-bifurcations
-			-stenosis
-	2. Reduced-order circuit modeling
-		-Built a 0D circuit analog coupling:
-			-geometric resistance (Rg)
-			-Windkessel model (Rc, Rp, C)
-	3. Optimization-based parameter estimation
-		-Implemented MATLAB global optimization (pattern search)
-		-Solved WK3 ODE system to match:
-			-systolic / diastolic pressure
-			-flow distribution at outlets
-		-Optimization runtime: < 1 minute
+    1. Geometry-aware resistance extraction
+        -Performed steady CFD simulation
+        -Extracted branch-wise geometric resistance (Rg)
+        -Captures real effects of:
+            -complex geometry
+            -bifurcations
+            -stenosis
+    2. Reduced-order circuit modeling
+        -Built a 0D circuit analog coupling:
+            -geometric resistance (Rg)
+            -Windkessel model (Rc, Rp, C)
+    3. Optimization-based parameter estimation
+        -Implemented MATLAB global optimization (pattern search)
+        -Solved WK3 ODE system to match:
+            -systolic / diastolic pressure
+            -flow distribution at outlets
+        -Optimization runtime: < 1 minute
 
 ## Technical Stack
 -CFD Solver: Lattice Boltzmann Method (LBM)
@@ -52,19 +52,19 @@ Designed a fast parameter estimation pipeline with three key components:
 -Pressure prediction error: as low as ~0.4 mmHg 
 -Successfully handled: normal geometry, stenosed aorta, non-physiological flow distributions
 -Reduced computational cost by:
-	-eliminating iterative CFD loops
-	-using only one steady CFD simulation
+    -eliminating iterative CFD loops
+    -using only one steady CFD simulation
 
 ## Engineering Impact
 -Enabled fast and reliable patient-specific simulations
 -Improved robustness for:
-	-complex geometries
-	-pathological conditions (e.g., stenosis)
+    -complex geometries
+    -pathological conditions (e.g., stenosis)
 -Provides a scalable workflow for multi-scale modeling
 -Applicable to:
-	-biomedical simulation platforms
-	-digital twins in healthcare
-	-simulation-driven diagnosis tools
+    -biomedical simulation platforms
+    -digital twins in healthcare
+    -simulation-driven diagnosis tools
 
 ## Result Gifs
 <div style="text-align: center;">
