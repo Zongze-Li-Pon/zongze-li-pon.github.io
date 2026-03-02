@@ -6,7 +6,9 @@ tags: [CNC, Drilling, Milling, Manufacturing]
 ---
 <a href="/completed-projects.html">← Back to Completed Projects</a>
 <div style="text-align: center;">
-  <p><strong>Fast Parameter Estimation for Multi-Scale CFD of Aortic Flow</strong></p>
+  <p style="font-size: 32px; font-weight: bold;">
+    Fast Parameter Estimation for Multi-Scale CFD of Aortic Flow
+  </p>
 </div>
 ## Project Overview
 Developed a fast and scalable framework to enable patient-specific multi-scale CFD simulations of aortic hemodynamics by automatically estimating Windkessel model parameters.
