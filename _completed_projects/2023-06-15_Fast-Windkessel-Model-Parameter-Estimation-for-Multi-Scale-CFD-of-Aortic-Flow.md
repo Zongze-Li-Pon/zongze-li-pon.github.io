@@ -1,7 +1,7 @@
 ---
 title: "Fast Windkessel Model Parameter Estimation for Multi-Scale CFD of Aortic Flow"
 date: 2023-06-15
-summary: "Hands-on CNC machining project involving artwork design, toolpath generation in Fusion 360, and drilling/milling using a Tormach system."
+summary: "Developed a fast and scalable multi-scale CFD framework for patient-specific aortic flow by coupling LBM simulations with Windkessel models, enabling efficient parameter estimation and accurate hemodynamic prediction."
 tags: [CNC, Drilling, Milling, Manufacturing]
 ---
 <a href="/completed-projects.html">← Back to Completed Projects</a>
