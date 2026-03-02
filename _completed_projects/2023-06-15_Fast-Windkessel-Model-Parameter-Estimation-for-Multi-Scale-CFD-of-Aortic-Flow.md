@@ -11,13 +11,17 @@ Developed a fast and scalable framework to enable patient-specific multi-scale C
 This work bridges 3D high-fidelity CFD (LBM) and 0D reduced-order cardiovascular models, enabling efficient and realistic simulation of blood flow in complex vascular systems.
 
 ## Problem & Motivation
+
 Accurate cardiovascular CFD simulations require physiological outlet boundary conditions, typically modeled using Windkessel (WK3) models.
+
 However:
-    -WK3 parameters (Rc, Rp, C) are case-specific and unknown
-    -Existing methods:
-        -Require iterative CFD simulations (very expensive)
-        -Ignore geometry-induced resistance
-        -Or rely on over-simplified assumptions (e.g., Poiseuille flow)
+
+- WK3 parameters (Rc, Rp, C) are case-specific and unknown
+- Existing methods:
+  - Require iterative CFD simulations (very expensive)
+  - Ignore geometry-induced resistance
+  - Or rely on over-simplified assumptions (e.g., Poiseuille flow)
+
 Result: High computational cost or reduced accuracy in patient-specific simulations.
 
 ## What I Built (Core Contribution)
