@@ -8,6 +8,7 @@ tags: [CNC, Drilling, Milling, Manufacturing]
 ## Fast Parameter Estimation for Multi-Scale CFD of Aortic Flow
 ## Project Overview
 Developed a fast and scalable framework to enable patient-specific multi-scale CFD simulations of aortic hemodynamics by automatically estimating Windkessel model parameters.
+
 This work bridges 3D high-fidelity CFD (LBM) and 0D reduced-order cardiovascular models, enabling efficient and realistic simulation of blood flow in complex vascular systems.
 
 ## Problem & Motivation
