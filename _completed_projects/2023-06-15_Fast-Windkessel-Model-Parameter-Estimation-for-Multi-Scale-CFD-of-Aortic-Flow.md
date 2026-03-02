@@ -18,7 +18,7 @@ However:
         -Require iterative CFD simulations (very expensive)
         -Ignore geometry-induced resistance
         -Or rely on over-simplified assumptions (e.g., Poiseuille flow)
-Result: High computational cost or reduced accuracy in patient-specific simulations
+Result: High computational cost or reduced accuracy in patient-specific simulations.
 
 ## What I Built (Core Contribution)
 Designed a fast parameter estimation pipeline with three key components:
