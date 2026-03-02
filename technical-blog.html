@@ -1,0 +1,17 @@
+---
+layout: default
+title: Technical Blog
+---
+
+<h1>Technical Blog</h1>
+
+<ul>
+  {% assign items = site.technical_blog | sort: "date" | reverse %}
+  {% for p in items %}
+    <li>
+      <a href="{{ p.url }}">{{ p.title }}</a>
+      <small>{{ p.date | date: "%Y-%m-%d" }}</small>
+      {% if p.summary %}<div>{{ p.summary }}</div>{% endif %}
+    </li>
+  {% endfor %}
+</ul>
