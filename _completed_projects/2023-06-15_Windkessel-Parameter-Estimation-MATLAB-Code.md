@@ -203,7 +203,7 @@ Solves the ODE for a given set of Windkessel parameters and returns the minimum 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align: center; margin-top: 20px;">
   <span id="busuanzi_container_page_pv">
-    👁️ Total Visitors: <span id="busuanzi_value_page_pv"></span><br>
+    👁️ Views: <span id="busuanzi_value_page_pv"></span><br>
     Powered by <a href="https://busuanzi.ibruce.info/" target="_blank" style="color: #007acc; text-decoration: none;">busuanzi</a>
   </span>
 </div>
