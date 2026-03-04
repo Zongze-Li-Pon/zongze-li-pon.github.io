@@ -102,6 +102,10 @@ The whole paper can be found [here](https://www.sciencedirect.com/science/articl
 
 <a href="/completed-projects.html">← Back to Completed Projects</a>
 
-<div style="text-align:center;">
-👁️ Total Visitors: <span id="busuanzi_value_site_uv"></span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div style="text-align: center; margin-top: 20px;">
+  <span id="busuanzi_container_page_pv">
+    👁️ Total Visitors: <span id="busuanzi_value_page_pv"></span><br>
+    Powered by <a href="https://busuanzi.ibruce.info/" target="_blank" style="color: #007acc; text-decoration: none;">busuanzi</a>
+  </span>
 </div>
