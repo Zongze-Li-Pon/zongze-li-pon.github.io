@@ -59,10 +59,10 @@ $$
 
 where
 
-- \(R_c\) denotes the **characteristic impedance**
-- \(R_p\) represents the **downstream vascular resistance**
-- \(C\) is the **total compliance of the downstream vascular system**
-- \(P_{ref}\) is a **reference pressure**
+- (\R_c\) denotes the **characteristic impedance**
+- (\R_p\) represents the **downstream vascular resistance**
+- (\C\) is the **total compliance of the downstream vascular system**
+- (\P_{ref}\) is a **reference pressure**
 
 In this problem, the inflow waveform \(Q(t)\) is known, and the reference pressure \(P_{ref}\) is prescribed. The goal is to determine the parameters \(R_c\), \(R_p\), and \(C\) such that the resulting pressure waveform \(P(t)\) has the desired maximum and minimum values.
 
