@@ -8,9 +8,8 @@ tags: [CFD, Biomedical Simulation, Windkessel Model, MATLAB, Numerical Methods]
 <script>
 window.MathJax = {
   tex: {
-    inlineMath: [['$', '$']],
-    displayMath: [['$$','$$']],
-    processEscapes: true
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']]
   }
 };
 </script>
