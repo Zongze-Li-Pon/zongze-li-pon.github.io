@@ -101,3 +101,7 @@ Designed a fast parameter estimation pipeline with three key components:
 The whole paper can be found [here](https://www.sciencedirect.com/science/article/abs/pii/S0045793023001196).
 
 <a href="/completed-projects.html">← Back to Completed Projects</a>
+
+<div style="text-align:center;">
+👁️ Total Visitors: <span id="busuanzi_value_page_pv"></span>
+</div>

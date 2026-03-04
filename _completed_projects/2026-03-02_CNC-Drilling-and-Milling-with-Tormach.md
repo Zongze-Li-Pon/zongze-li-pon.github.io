@@ -50,3 +50,7 @@ Finally, we have our Kirby on a piece of aluminum.
 </div>
 
 <a href="/completed-projects.html">← Back to Completed Projects</a>
+
+<div style="text-align:center;">
+👁️ Total Visitors: <span id="busuanzi_value_page_pv"></span>
+</div>
