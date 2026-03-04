@@ -5,11 +5,13 @@ summary: "Hands-on CNC machining project involving artwork design, toolpath gene
 tags: [CNC, Drilling, Milling, Manufacturing]
 ---
 <a href="/completed-projects.html">← Back to Completed Projects</a>
+
 <div style="text-align: center;">
   <p style="font-size: 32px; font-weight: bold;">
     CNC Drilling and Milling with Tormach
   </p>
 </div>
+
 ## Acknowledgment
 We are very fortunate to have Dr. Baksh, Nicholas, who is dedicated to providing a better learning environment for Mechanical and Aerospace Engineering students at the University of South Florida. He has introduced a digitally controlled CNC drilling and milling machine, the Tormach PathPilot, which enables us to perform precise machining and create customized patterns with high accuracy.
 
@@ -46,4 +48,5 @@ Finally, we have our Kirby on a piece of aluminum.
 <div style="text-align: center;">
   <img src="/completed-projects/2026-03-02_CNC-Drilling-and-Milling-with-Tormach/product.jpg" width="70%">
 </div>
+
 <a href="/completed-projects.html">← Back to Completed Projects</a>

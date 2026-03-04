@@ -5,6 +5,7 @@ summary: "Developed a fast and scalable multi-scale CFD framework for patient-sp
 tags: [CFD, Multiscale Modeling, Biomedical Simulation, Windkessel Model, Lattice Boltzmann Method]
 ---
 <a href="/completed-projects.html">← Back to Completed Projects</a>
+
 <div style="text-align: center;">
   <p style="font-size: 32px; font-weight: bold;">
     Fast Parameter Estimation for Multi-Scale CFD of Aortic Flow

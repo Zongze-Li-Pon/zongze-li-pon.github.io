@@ -4,12 +4,26 @@ date: 2023-06-15
 summary: "MATLAB tool for estimating Windkessel (WK3) model parameters by solving the governing ODE and using optimization to match target pressure waveforms, supporting multi-scale CFD simulations of cardiovascular flow."
 tags: [CFD, Biomedical Simulation, Windkessel Model, MATLAB, Numerical Methods]
 ---
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']]
+  }
+};
+</script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <a href="/completed-projects.html">← Back to Completed Projects</a>
+
 <div style="text-align: center;">
   <p style="font-size: 32px; font-weight: bold;">
     Windkessel Parameter Estimation MATLAB Code
   </p>
 </div>
+
 ## Acknowledgment
 
 Many thanks to my Ph.D. advisor **Dr. Wenbin Mao**  
@@ -185,4 +199,5 @@ Represents the three-element Windkessel model ODE and computes the time derivati
 **RCtoODE**
 
 Solves the ODE for a given set of Windkessel parameters and returns the minimum and maximum pressures from the final cardiac cycles. These values are used by the optimization algorithm to evaluate the objective function.
+
 <a href="/completed-projects.html">← Back to Completed Projects</a>
