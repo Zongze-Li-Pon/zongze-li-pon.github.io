@@ -26,15 +26,13 @@ window.MathJax = {
 
 ## Acknowledgment
 
-Many thanks to my Ph.D. advisor **Dr. Wenbin Mao**  
-(https://scholar.google.com/citations?user=FDHGidUAAAAJ&hl), who mentored me during the development of this MATLAB code. This was one of the first research codes I worked with during my Ph.D. Dr. Mao implemented most of the original framework, and I later learned from it and revised and extended parts of the code.
+Many thanks to my Ph.D. advisor [**Dr. Wenbin Mao**](https://scholar.google.com/citations?user=FDHGidUAAAAJ&hl), who mentored me during the development of this MATLAB code. This was one of the first research codes I worked with during my Ph.D. Dr. Mao implemented most of the original framework, and I later learned from it and revised and extended parts of the code.
 
-## Background
+## Introduction
 
-This MATLAB code was originally developed to estimate **Windkessel model parameters**, which serves as one step in our published paper:
+This MATLAB code (can be found [**here**](https://github.com/Zongze-Li-Pon/windkessel-model-parameters-estimation)) was originally developed to estimate **Windkessel model parameters**, which serves as one step in our published paper:
 
-**A fast approach to estimating Windkessel model parameters for patient-specific multi-scale CFD simulations of aortic flow**  
-https://www.sciencedirect.com/science/article/abs/pii/S0045793023001196
+[**A fast approach to estimating Windkessel model parameters for patient-specific multi-scale CFD simulations of aortic flow**](https://www.sciencedirect.com/science/article/abs/pii/S0045793023001196)
 
 Specifically, this code corresponds to the **second step described in Section 2.4.2** of that paper.
 
