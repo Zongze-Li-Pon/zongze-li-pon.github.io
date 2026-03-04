@@ -2,7 +2,7 @@
 title: "Fast Windkessel Model Parameter Estimation for Multi-Scale CFD of Aortic Flow"
 date: 2023-06-15
 summary: "Developed a fast and scalable multi-scale CFD framework for patient-specific aortic flow by coupling LBM simulations with Windkessel models, enabling efficient parameter estimation and accurate hemodynamic prediction."
-tags: [CNC, Drilling, Milling, Manufacturing]
+tags: [CFD, Multiscale Modeling, Biomedical Simulation, Windkessel Model, Lattice Boltzmann Method]
 ---
 <a href="/completed-projects.html">← Back to Completed Projects</a>
 <div style="text-align: center;">
