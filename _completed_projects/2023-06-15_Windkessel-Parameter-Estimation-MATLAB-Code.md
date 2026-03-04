@@ -8,8 +8,9 @@ tags: [CFD, Biomedical Simulation, Windkessel Model, MATLAB, Numerical Methods]
 <script>
 window.MathJax = {
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    displayMath: [['$$','$$'], ['\\[','\\]']]
+    inlineMath: [['$', '$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true
   }
 };
 </script>
@@ -59,14 +60,14 @@ $$
 
 where
 
-- (\R_c\) denotes the **characteristic impedance**
-- (\R_p\) represents the **downstream vascular resistance**
-- (\C\) is the **total compliance of the downstream vascular system**
-- (\P_{ref}\) is a **reference pressure**
+- $R_c$ denotes the **characteristic impedance**
+- $R_p$ represents the **downstream vascular resistance**
+- $C$ is the **total compliance of the downstream vascular system**
+- $P_{ref}$ is a **reference pressure**
 
-In this problem, the inflow waveform \(Q(t)\) is known, and the reference pressure \(P_{ref}\) is prescribed. The goal is to determine the parameters \(R_c\), \(R_p\), and \(C\) such that the resulting pressure waveform \(P(t)\) has the desired maximum and minimum values.
+In this problem, the inflow waveform $Q(t)$ is known, and the reference pressure $P_{ref}$ is prescribed. The goal is to determine the parameters $R_c$, $R_p$, and $C$ such that the resulting pressure waveform $P(t)$ has the desired maximum and minimum values.
 
-In our study, the target values correspond to the **systolic and diastolic pressures**, which are set to **50 mmHg and 10 mmHg**, respectively (with \(P_{ref} = 70\) mmHg).
+In our study, the target values correspond to the **systolic and diastolic pressures**, which are set to **50 mmHg and 10 mmHg**, respectively (with $P_{ref} = 70$ mmHg).
 
 ## Objective Function
 
@@ -91,7 +92,7 @@ The overall logic of the code is straightforward.
 
 **Given**
 
-- an input waveform \(Q(t)\)
+- an input waveform $Q(t)$
 - a governing ODE
 
 **Goal**
@@ -117,8 +118,8 @@ Section A defines the input data and configuration parameters required for estim
 
 First, the flow waveform at the **ascending aorta (AAo)** is provided through a CSV file (`flowrate.csv`):
 
-- Column 1: time \(T\)  
-- Column 2: flow rate \(Q\) (mL/s)
+- Column 1: time $T$  
+- Column 2: flow rate $Q$ (mL/s)
 
 Users can replace this file with their own measured or simulated waveform.
 
@@ -161,10 +162,10 @@ Section C determines the optimal Windkessel model parameters using a **pattern s
 
 The optimization variables include:
 
-- proximal resistance **R1** (corresponding to \(R_c\))
+- proximal resistance **R1** (corresponding to $R_c$)
 - compliance **C**
 
-The distal resistance **R2** corresponds to \(R_p\) and is calculated as
+The distal resistance **R2** corresponds to $R_p$ and is calculated as
 
 $$
 R_2 = R_{Total} - R_1
