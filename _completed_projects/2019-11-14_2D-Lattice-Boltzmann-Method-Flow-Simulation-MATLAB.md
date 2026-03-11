@@ -421,14 +421,25 @@ These visualizations allow the **vortex shedding process** and the formation of 
 
 ---
 
-## Animation Output
+## Result Animation
 
-The code can also export animated GIFs showing
+<div style="display: flex; justify-content: center; gap: 40px;">
 
-- velocity field evolution
-- vorticity field evolution
+<div style="text-align: center;">
+<img src="/completed-projects/2019-11-14_2D-Lattice-Boltzmann-Method-Flow-Simulation-MATLAB/velocity-field.gif" width="350">
+<p style="font-size: 14px;">
+Velocity Field
+</p>
+</div>
 
-These animations help visualize the periodic vortex shedding process.
+<div style="text-align: center;">
+<img src="/completed-projects/2019-11-14_2D-Lattice-Boltzmann-Method-Flow-Simulation-MATLAB/vorticity-field.gif" width="350">
+<p style="font-size: 14px;">
+Vorticity Field
+</p>
+</div>
+
+</div>
 
 ---
 
