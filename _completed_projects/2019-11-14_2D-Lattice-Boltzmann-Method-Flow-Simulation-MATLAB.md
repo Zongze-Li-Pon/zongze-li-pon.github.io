@@ -68,14 +68,14 @@ The simulation uses the **D2Q9 Lattice Boltzmann model** with a **single-relaxat
 
 The discrete lattice velocities are
 
-\[
+$$
 c_i =
 \begin{cases}
 (0,0) & i = 0 \\
 (\pm1,0),(0,\pm1) & i=1\sim4 \\
 (\pm1,\pm1) & i=5\sim8
 \end{cases}
-\]
+$$
 
 The evolution equation is
 
