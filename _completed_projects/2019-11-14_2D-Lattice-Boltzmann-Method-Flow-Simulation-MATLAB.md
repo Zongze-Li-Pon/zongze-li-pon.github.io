@@ -1,9 +1,20 @@
 ---
 title: "2D Lattice Boltzmann Method Flow Simulation (MATLAB)"
-date: 2026-03-11
+date: 2019-11-14
 summary: "A compact MATLAB implementation of a 2D Lattice Boltzmann Method solver demonstrating channel flow past a circular obstruction and the formation of the classical Kármán vortex street."
 tags: [CFD, Lattice Boltzmann Method, MATLAB, Fluid Dynamics, Vortex Shedding]
 ---
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']]
+  }
+};
+</script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <a href="/completed-projects.html">← Back to Completed Projects</a>
 
