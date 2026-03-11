@@ -79,36 +79,39 @@ $$
 
 The evolution equation is
 
-\[
-f_i(x+c_i\Delta t,t+\Delta t)=
-f_i(x,t)-\Omega(f_i-f_i^{eq})
-\]
+$$
+f_i(x + c_i \Delta t, t + \Delta t)
+=
+f_i(x,t) - \Omega \left(f_i - f_i^{eq}\right)
+$$
 
 where
 
-- \(f_i\): particle distribution function  
-- \(f_i^{eq}\): equilibrium distribution  
-- \(\Omega\): relaxation parameter
+- $f_i$: particle distribution function  
+- $f_i^{eq}$: equilibrium distribution  
+- $\Omega$: relaxation parameter
 
 The equilibrium distribution is
 
-\[
-f_i^{eq}=
+$$
+f_i^{eq} =
 \rho w_i
 \left(
-1+3(c_i\cdot u)+\frac{9}{2}(c_i\cdot u)^2-\frac{3}{2}u^2
+1 + 3(c_i \cdot u) +
+\frac{9}{2}(c_i \cdot u)^2 -
+\frac{3}{2}u^2
 \right)
-\]
+$$
 
 Macroscopic variables are obtained from distribution moments
 
-\[
-\rho=\sum_i f_i
-\]
+$$
+\rho = \sum_i f_i
+$$
 
-\[
-u=\frac{1}{\rho}\sum_i f_i c_i
-\]
+$$
+\mathbf{u} = \frac{1}{\rho} \sum_i f_i \mathbf{c}_i
+$$
 
 ---
 
