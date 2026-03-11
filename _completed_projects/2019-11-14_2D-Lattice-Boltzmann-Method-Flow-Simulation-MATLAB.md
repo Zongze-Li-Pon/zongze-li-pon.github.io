@@ -32,6 +32,10 @@ The simulation models **incompressible channel flow past a circular obstruction*
 
 The goal of this project is to provide a **clear and accessible example** of how the LBM algorithm works in practice. With only a few hundred lines of MATLAB code, the implementation demonstrates the core components of a typical LBM solver.
 
+<div style="text-align: center; font-size: 18px; margin-top: 20px;">
+  The code can be found <a href="https://github.com/Zongze-Li-Pon/2d-lattice-boltzmann-method-flow-simulation-matlab">here</a>!
+</div>
+
 Key elements included in the implementation:
 
 - D2Q9 lattice model
