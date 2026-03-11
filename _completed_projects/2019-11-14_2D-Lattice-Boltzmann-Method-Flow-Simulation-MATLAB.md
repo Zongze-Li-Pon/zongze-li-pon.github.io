@@ -119,27 +119,27 @@ $$
 
 In the BGK LBM model, the kinematic viscosity is related to the relaxation time:
 
-\[
-\nu=c_s^2(\tau-\frac{1}{2})
-\]
+$$
+\nu = c_s^2 \left(\tau - \frac{1}{2}\right)
+$$
 
 For the D2Q9 model
 
-\[
-c_s^2=\frac{1}{3}
-\]
+$$
+c_s^2 = \frac{1}{3}
+$$
 
 Thus
 
-\[
-\nu=\frac{1}{3}(\tau-\frac{1}{2})
-\]
+$$
+\nu = \frac{1}{3}\left(\tau - \frac{1}{2}\right)
+$$
 
 which gives
 
-\[
-\tau=3\nu+\frac{1}{2}
-\]
+$$
+\tau = 3\nu + \frac{1}{2}
+$$
 
 This relation is used to convert a target viscosity into the relaxation parameter used in the solver.
 
@@ -160,7 +160,7 @@ The MATLAB code is organized into several sections corresponding to the key step
 This section defines the computational domain and the physical flow parameters.
 
 | Parameter | Description |
-|---|---|
+|:---:|:---:|
 | lx | number of lattice nodes in x direction |
 | ly | number of lattice nodes in y direction |
 | Re | Reynolds number |
@@ -195,27 +195,27 @@ This section defines numerical parameters used in the solver.
 
 The Reynolds number relation
 
-\[
-Re=\frac{UD}{\nu}
-\]
+$$
+Re = \frac{U D}{\nu}
+$$
 
 is rearranged to determine viscosity
 
-\[
-\nu=\frac{UD}{Re}
-\]
+$$
+\nu = \frac{U D}{Re}
+$$
 
 The relaxation time is then computed
 
-\[
-\tau=3\nu+\frac{1}{2}
-\]
+$$
+\tau = 3\nu + \frac{1}{2}
+$$
 
 and the collision relaxation parameter is
 
-\[
-\Omega=\frac{1}{\tau}
-\]
+$$
+\Omega = \frac{1}{\tau}
+$$
 
 The relaxation time affects both **stability and accuracy**.
 
@@ -281,22 +281,22 @@ The channel flow is driven by a small pressure difference.
 
 For plane Poiseuille flow
 
-\[
+$$
 \Delta P =
 \frac{8 U L_x \nu}{L_y^2}
-\]
+$$
 
 In LBM
 
-\[
-p=c_s^2\rho=\frac{1}{3}\rho
-\]
+$$
+p = c_s^2 \rho = \frac{1}{3}\rho
+$$
 
 Thus
 
-\[
-\Delta\rho=3\Delta P
-\]
+$$
+\Delta \rho = 3 \Delta P
+$$
 
 The inlet and outlet densities are defined as
 
@@ -363,9 +363,9 @@ Each iteration performs the standard LBM update sequence:
 
 The collision step relaxes the particle distributions toward equilibrium:
 
-\[
-f_i^{post}=f_i-\omega(f_i-f_i^{eq})
-\]
+$$
+f_i^{post} = f_i - \omega \left( f_i - f_i^{eq} \right)
+$$
 
 This represents particle interactions and drives the distribution toward equilibrium.
 
@@ -375,10 +375,11 @@ This represents particle interactions and drives the distribution toward equilib
 
 After collision, distributions propagate to neighboring nodes:
 
-\[
-f_i(x+c_i\Delta t,t+\Delta t)=
-f_i^{post}(x,t)
-\]
+$$
+f_i(\mathbf{x} + \mathbf{c}_i \Delta t,\; t + \Delta t)
+=
+f_i^{post}(\mathbf{x}, t)
+$$
 
 This step represents particle motion across the lattice.
 
@@ -388,9 +389,9 @@ This step represents particle motion across the lattice.
 
 Solid boundaries (cylinder and channel walls) use the **bounce-back scheme**
 
-\[
-f_i = f_{opp(i)}
-\]
+$$
+f_i = f_{\text{opp}(i)}
+$$
 
 which enforces a **no-slip velocity condition**.
 
