@@ -20,7 +20,7 @@ window.MathJax = {
 
 <div style="text-align: center;">
   <p style="font-size: 32px; font-weight: bold;">
-    Rotating Wing Simulation using LBM–IBM
+    Rotating Blade Simulation Using LBM–IBM
   </p>
 </div>
 
@@ -50,15 +50,11 @@ In the numerical simulation, this auxiliary structure is unnecessary, since the 
 
 The solid wing used in this simulation is:
 
-<div style="display:flex; justify-content:center;">
-
 | Parameter | Value |
 |:---:|:---:|
 | chord $c$ | 7.62 cm |
 | span $s$ | 15.24 cm |
 | thickness $h$ | 0.254 cm |
-
-</div>
 
 Following the experimental setup, the wing is placed at a **45° angle of attack** and rotates about a central shaft positioned
 
@@ -175,14 +171,10 @@ The wing/blade completes **two full revolutions**, which leads to different valu
 
 For convenience and reproducibility, these values are listed in **Table 1**, and the corresponding angular velocity profiles are shown in **Figure 3**.
 
-<div style="display:flex; justify-content:center; margin-top: 20px;">
-
 | $Re$ | $\Omega_{max}$ | $t_1$ | $t_2$ | $t_3$ | $t_4$ |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | 120 | 0.671 | 0.300 | 0.363 | 19.032 | 19.096 |
 | 500 | 2.795 | 0.300 | 0.315 | 4.796 | 4.811 |
-
-</div>
 
 <div style="text-align: center; font-size: 14px; margin-top: 8px;">
   Table 1. Angular velocity and time points for different Reynolds numbers.
@@ -281,9 +273,13 @@ Once potential conflicts of interest are resolved, we may consider releasing it 
 clear; close all; clc; format long;
 
 %% Global variables
+
 Re = 1000; % Desired Re number
+
 c = 0.0762; % Wing chord
+
 nu = 0.000060862; % Kinematic viscosity
+
 % nu = 0.000008117; % Kinematic viscosity Re 1000
 a = 50; % Paper specified a
 tout = 0.3; % The time before acceleration and deacceleratio
