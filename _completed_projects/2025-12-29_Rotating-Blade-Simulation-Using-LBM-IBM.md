@@ -71,11 +71,7 @@ Finally, the resulting geometry takes the form shown in **Figure 1**, and the co
 
 # Resolution Convergence Check
 
-In this simple **resolution convergence check**, a Reynolds number of 
-$$
-Re = 120
-$$
- is used together with a **constant angular velocity**, whereas the original paper [1] employs a **time-dependent angular velocity profile**.
+In this simple **resolution convergence check**, a Reynolds number of $$Re = 500$$ is used together with a **constant angular velocity**, whereas the original paper [1] employs a **time-dependent angular velocity profile**.
 
 The Reynolds number is defined as follows:
 
@@ -87,23 +83,13 @@ $$
 Re = \frac{\Omega_{max} R_{75} c}{\nu}
 $$
 
-where 
-$$
-R_{75} = 0.75(r_t + s)
-$$
- and $\nu$ is the kinematic viscosity of the fluid.
+where $$R_{75} = 0.75(r_t + s)$$ and $\nu$ is the kinematic viscosity of the fluid.
 
 Although $\Omega_{max}$ is introduced in the original paper as the maximum angular velocity in the transient profile, in the present resolution convergence study it is simply used as a **constant angular velocity**.
 
 Simulations are conducted with **40 to 100 nodes** along the spanwise direction, and the results are summarized below.
 
-As shown in **Figure 2**, the simulation becomes mesh-independent as the resolution increases. Based on this convergence behavior, I finally choose
-
-$$
-N = 70
-$$
-
-as the resolution for all cases.
+As shown in **Figure 2**, the simulation becomes mesh-independent as the resolution increases. Based on this convergence behavior, I finally choose $$N = 70$$ as the resolution for all cases.
 
 <div style="text-align: center; margin-top: 20px;">
   <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/resolution-check.jpg" width="500">
@@ -124,13 +110,7 @@ In the reference paper [1], the kinematics are divided into **three phases**:
 
 During the acceleration and deceleration phases, the angular velocity varies linearly from zero to its maximum value, and then from the maximum value back to zero.
 
-Because a sudden change in angular velocity would introduce **infinite acceleration**, a smoothing function is applied, as given in **Equation 2**. Here, $a$ is the smoothing parameter, which is set to
-
-$$
-a = 50
-$$
-
-following the original paper.
+Because a sudden change in angular velocity would introduce **infinite acceleration**, a smoothing function is applied, as given in **Equation 2**. Here, $a$ is the smoothing parameter, which is set to $$a = 50$$ following the original paper.
 
 The parameters $t_1$, $t_2$, $t_3$, and $t_4$ denote the start and end times of the acceleration and deceleration phases, respectively.
 
@@ -228,6 +208,10 @@ Designed to reproduce the **time-dependent motion described in the original pape
   </div>
 
 </div>
+
+It can be observed that in the Re = 120 case, the vortex remains primarily attached near the edge of the blade. In contrast, for Re = 500, the vortex structures extend throughout most of the computational domain. This suggests that mixing may be significantly enhanced at higher Reynolds numbers.
+
+Further parametric studies could be conducted to identify the optimal geometry or rotational speed that maximizes mixing performance while minimizing energy consumption, allowing the mixing process to operate at an optimal efficiency.
 
 ---
 
