@@ -270,16 +270,13 @@ Once potential conflicts of interest are resolved, we may consider releasing it 
 
 # Transient Motion MATLAB Code
 
+```matlab
 clear; close all; clc; format long;
 
 %% Global variables
-
 Re = 1000; % Desired Re number
-
 c = 0.0762; % Wing chord
-
 nu = 0.000060862; % Kinematic viscosity
-
 % nu = 0.000008117; % Kinematic viscosity Re 1000
 a = 50; % Paper specified a
 tout = 0.3; % The time before acceleration and deacceleratio
@@ -374,11 +371,13 @@ function Omega = omega_profile(t, Omega_max, a, t1, t2, t3, t4)
             + Omega_max/2;
     end
 end
+```
 
 ---
 
 # Geometry Maker MATLAB Code
 
+```matlab
 %% generate_box_stl_xyz.m
 % -------------------------------------------------------------------------
 % Utility script to generate a rectangular box STL file.
@@ -627,6 +626,7 @@ end
 fclose(fid);
 
 end
+```
 
 <a href="/completed-projects.html">← Back to Completed Projects</a>
 
