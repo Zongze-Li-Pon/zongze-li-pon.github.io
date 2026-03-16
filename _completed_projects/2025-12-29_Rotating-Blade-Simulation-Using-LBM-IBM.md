@@ -67,7 +67,7 @@ away from the wing root.
 Finally, the resulting geometry takes the form shown in **Figure 1**, and the corresponding MATLAB code is provided in the Appendix.
 
 <div style="text-align: center; margin-top: 20px;">
-  <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/geometry-model.png" width="500">
+  <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/geometry-model.jpg" width="500">
   <p style="font-size: 14px;">
     Figure 1. Wing/blade STL model with the mesh displayed.
   </p>
@@ -116,7 +116,7 @@ $$
 as the resolution for all cases.
 
 <div style="text-align: center; margin-top: 20px;">
-  <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/resolution-check.png" width="500">
+  <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/resolution-check.jpg" width="500">
   <p style="font-size: 14px;">
     Figure 2. Average force during the 10th period as a function of resolution (force unit: Newton).
   </p>
@@ -181,7 +181,7 @@ For convenience and reproducibility, these values are listed in **Table 1**, and
 </div>
 
 <div style="text-align: center; margin-top: 20px;">
-  <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/omega-profile.png" width="1000">
+  <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/omega-profile.jpg" width="1000">
   <p style="font-size: 14px;">
     Figure 3. Angular velocity profile for Re= (a) 120 and (b) 500.
   </p>
