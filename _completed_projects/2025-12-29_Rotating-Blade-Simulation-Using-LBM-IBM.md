@@ -181,7 +181,7 @@ For convenience and reproducibility, these values are listed in **Table 1**, and
 </div>
 
 <div style="text-align: center; margin-top: 20px;">
-  <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/omega-profile.png" width="500">
+  <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/omega-profile.png" width="1000">
   <p style="font-size: 14px;">
     Figure 3. Angular velocity profile for Re= (a) 120 and (b) 500.
   </p>
