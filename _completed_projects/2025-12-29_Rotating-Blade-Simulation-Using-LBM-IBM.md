@@ -57,11 +57,9 @@ The solid wing used in this simulation is:
 | thickness $h$ | 0.254 cm |
 
 Following the experimental setup, the wing is placed at a **45° angle of attack** and rotates about a central shaft positioned
-
 $$
 r_t = 3.81\ \text{cm}
 $$
-
 away from the wing root.
 
 Finally, the resulting geometry takes the form shown in **Figure 1**, and the corresponding MATLAB code is provided in the Appendix.
@@ -201,7 +199,6 @@ Used for the **resolution convergence check**.
 
 Designed to reproduce the **time-dependent motion described in the original paper**.
 
-### Constant Case
 
 <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px;">
 
@@ -221,8 +218,6 @@ Designed to reproduce the **time-dependent motion described in the original pape
 
 </div>
 
-
-### Transient Case
 
 <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px;">
 
