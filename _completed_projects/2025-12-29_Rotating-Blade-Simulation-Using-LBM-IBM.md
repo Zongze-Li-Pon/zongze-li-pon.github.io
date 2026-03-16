@@ -56,11 +56,11 @@ The solid wing used in this simulation is:
 | span $s$ | 15.24 cm |
 | thickness $h$ | 0.254 cm |
 
-Following the experimental setup, the wing is placed at a **45° angle of attack** and rotates about a central shaft positioned
+Following the experimental setup, the wing is placed at a **45° angle of attack** and rotates about a central shaft positioned 
 $$
 r_t = 3.81\ \text{cm}
 $$
-away from the wing root.
+ away from the wing root.
 
 Finally, the resulting geometry takes the form shown in **Figure 1**, and the corresponding MATLAB code is provided in the Appendix.
 
@@ -76,11 +76,9 @@ Finally, the resulting geometry takes the form shown in **Figure 1**, and the co
 # Resolution Convergence Check
 
 In this simple **resolution convergence check**, a Reynolds number of
-
 $$
 Re = 120
 $$
-
 is used together with a **constant angular velocity**, whereas the original paper [1] employs a **time-dependent angular velocity profile**.
 
 The Reynolds number is defined as follows:
