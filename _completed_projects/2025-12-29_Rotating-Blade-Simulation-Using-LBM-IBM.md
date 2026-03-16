@@ -274,7 +274,7 @@ Once potential conflicts of interest are resolved, we may consider releasing it 
 clear; close all; clc; format long;
 
 %% Global variables
-Re = 1000; % Desired Re number
+Re = 500; % Desired Re number
 c = 0.0762; % Wing chord
 nu = 0.000060862; % Kinematic viscosity
 % nu = 0.000008117; % Kinematic viscosity Re 1000
