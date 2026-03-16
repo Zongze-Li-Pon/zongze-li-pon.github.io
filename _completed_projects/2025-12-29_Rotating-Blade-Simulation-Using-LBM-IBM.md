@@ -206,14 +206,14 @@ Designed to reproduce the **time-dependent motion described in the original pape
 <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px;">
 
   <div style="text-align: center;">
-    <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/constant120.gif" width="350">
+    <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/constant120.gif" width="500">
     <p style="font-size: 14px;">
       Constant Case (Re = 120) Vorticity Field
     </p>
   </div>
 
   <div style="text-align: center;">
-    <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/constant500.gif" width="350">
+    <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/constant500.gif" width="500">
     <p style="font-size: 14px;">
       Constant Case (Re = 500) Vorticity Field
     </p>
@@ -227,14 +227,14 @@ Designed to reproduce the **time-dependent motion described in the original pape
 <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px;">
 
   <div style="text-align: center;">
-    <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/transient120.gif" width="350">
+    <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/transient120.gif" width="500">
     <p style="font-size: 14px;">
       Transient Case (Re = 120) Vorticity Field
     </p>
   </div>
 
   <div style="text-align: center;">
-    <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/transient500.gif" width="350">
+    <img src="/completed-projects/2025-12-29_Rotating-Blade-Simulation-Using-LBM-IBM/transient500.gif" width="500">
     <p style="font-size: 14px;">
       Transient Case (Re = 500) Vorticity Field
     </p>
