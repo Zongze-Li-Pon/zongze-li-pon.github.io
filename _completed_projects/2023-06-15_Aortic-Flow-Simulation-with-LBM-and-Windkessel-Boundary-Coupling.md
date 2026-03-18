@@ -47,18 +47,28 @@ Beyond the specific application to aortic flow simulation, the structure of this
 
 The repository is organized as follows:
 
-
 palabos-aortic-flow-windkessel3/
+
 ├── myTools/
+
 │ ├── FluidEdgeFetcher3D.cpp
+
 │ ├── SurfaceForceTools.cpp
+
 │ ├── Interpolation.cpp
+
 │ ├── WindkesselModel.cpp
+
 │ ├── SimulationSetup.cpp
+
 │ └── PostProcessingTools.cpp
+
 ├── myScript
+
 ├── param.xml
+
 ├── CMakeLists.txt
+
 └── README.md
 
 ---
