@@ -73,11 +73,7 @@ palabos-aortic-flow-windkessel3/
 
 ---
 
-## Code
-
-The codebase is organized into several modules, each designed with a specific functionality. The modular design allows individual components to be reused or extended independently.
-
-### 1. FluidEdgeFetcher3D and OpenValueFetcher3D in FluidEdgeFetcher3D.cpp
+## 1. FluidEdgeFetcher3D and OpenValueFetcher3D in FluidEdgeFetcher3D.cpp
 
 One important difficulty in patient-specific vascular simulations with **off-lattice boundary conditions** is that many opening-related quantities are not directly available in a convenient form.
 
@@ -90,9 +86,9 @@ To address this, I implemented two utility classes:
 
 These two classes work together to identify boundary-adjacent fluid nodes, classify them according to opening and wall information, and then use those tagged nodes to extract physically meaningful opening quantities such as **flow rate** and **average density**.
 
-#### a. FluidEdgeFetcher3D
+### a. FluidEdgeFetcher3D
 
-**Purpose:**  
+**Purpose:**
 `FluidEdgeFetcher3D` is designed to locate and classify fluid nodes that lie next to the off-lattice triangulated boundary.
 
 Its design follows a strategy similar to the Palabos off-lattice treatment: for each candidate fluid node near the boundary, the code checks neighboring lattice directions and determines whether the segment connecting the fluid node to a neighboring solid node intersects the triangulated surface mesh.
@@ -101,13 +97,13 @@ If an intersection exists, the node is considered associated with the correspond
 
 The logic of `FluidEdgeFetcher3D` can be summarized as follows.
 
-##### Step 1 – Scan the voxelized domain
+**Step 1 – Scan the voxelized domain**
 
 The constructor loops over the voxelized computational domain and searches for cells marked as **border nodes** in the voxel matrix.
 
 These border nodes are the most relevant candidates because they are located near the triangulated boundary and may participate in boundary-related operations.
 
-##### Step 2 – Keep only fluid nodes
+**Step 2 – Keep only fluid nodes**
 
 For each candidate location, the code first checks whether the current cell belongs to the fluid region. This is determined according to the selected flow type:
 
@@ -116,7 +112,7 @@ For each candidate location, the code first checks whether the current cell belo
 
 This makes the utility flexible enough to support either internal-flow or external-flow configurations.
 
-##### Step 3 – Detect boundary intersections
+**Step 3 – Detect boundary intersections**
 
 For each fluid node, the code loops over all lattice directions except the rest population.
 
@@ -136,7 +132,7 @@ This step establishes the connection between:
 
 After counting how many intersecting directions belong to each boundary tag, the node is classified into one of two categories.
 
-#### Edge nodes
+**Edge nodes**
 
 If a fluid node is associated with an opening but not with the wall, it is stored as an **edge node** of that opening.
 
@@ -145,13 +141,13 @@ These nodes are useful for:
 - applying opening-related boundary conditions
 - computing opening-averaged quantities
 
-#### Corner nodes
+**Corner nodes**
 
 If a fluid node is influenced by both the wall and an opening, it is classified as a **corner node**.
 
 This distinction is useful because corner nodes are geometrically special: they lie near the junction between wall and opening surfaces, and treating them separately can improve clarity in both post-processing and boundary tagging.
 
-### Data Structures
+**Data Structures**
 
 The class stores the collected nodes in several containers.
 
