@@ -291,7 +291,6 @@ To address this, I implemented a customized surface-force evaluation method in `
 This file mainly contains three parts:
 
 - `ComputeParticleForce3DInnerborder`
-- `computeSurfaceForceInnerBorder(...)`
 - `writeSurF(...)`
 
 Together, these components provide a custom workflow for evaluating and exporting surface force information based only on **inner-border / usable fluid nodes**.
@@ -416,57 +415,7 @@ This is especially helpful for:
 
 where geometric interpolation near the wall can otherwise be sensitive to stencil contamination.
 
-<div align="center"><strong>b. computeSurfaceForceInnerBorder</strong></div>
-
-**Purpose:**  
-The function `computeSurfaceForceInnerBorder(...)` provides a higher-level interface for applying the customized surface-force processor to the full triangulated boundary.
-
-Its role is to generate a particle field carrying surface-force information computed by the inner-border-only method.
-
-Two overloads are provided:
-
-- one for the full computational domain
-- one for a user-specified sub-domain
-
-This makes the routine flexible for both global output and localized evaluation.
-
-**Workflow**
-
-The function performs the following steps:
-
-1. Select the appropriate boundary mesh  
-   - static open mesh
-   - dynamic open mesh
-
-2. Create a particle field associated with the lattice multi-block structure
-
-3. Generate one particle per boundary vertex using:
-   - `CreateParticleFromVertex3D`
-
-4. Apply the customized processor:
-   - `ComputeParticleForce3DInnerborder`
-
-5. Restore the original boundary selection
-
-The final output is a particle field in which each boundary vertex carries:
-
-- force vector
-- pressure
-- wall shear stress
-
-This particle-based representation is then ready for VTK export or further analysis.
-
-**Why a Separate Wrapper is Useful**
-
-Instead of directly embedding all logic into one function, this wrapper separates:
-
-- particle generation
-- processor application
-- mesh selection management
-
-This makes the code cleaner and easier to reuse in different post-processing workflows.
-
-<div align="center"><strong>c. writeSurF</strong></div>
+<div align="center"><strong>b. writeSurF</strong></div>
 
 **Purpose:**  
 The function `writeSurF(...)` writes surface-force results into VTK files for visualization and comparison.
@@ -512,23 +461,6 @@ This provides a transparent way to:
 - validate the modified force evaluation
 - inspect differences between the two methods
 - choose the more appropriate output for specific hemodynamic analyses
-
-**Summary**
-
-`SurfaceForceTools.cpp` extends the original Palabos surface-force evaluation by introducing a more selective interpolation strategy near off-lattice boundaries.
-
-The three key components serve different roles:
-
-- `ComputeParticleForce3DInnerborder`  
-  performs the customized force reconstruction using only valid fluid-side cells
-
-- `computeSurfaceForceInnerBorder(...)`  
-  builds the corresponding particle-based surface-force field
-
-- `writeSurF(...)`  
-  exports both the standard and custom results for visualization and comparison
-
-Overall, this file improves the robustness and physical consistency of wall-quantity evaluation in complex internal-flow simulations, particularly for patient-specific vascular geometries.
 
 ### 3. Interpolation Utility
 
