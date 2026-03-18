@@ -132,16 +132,12 @@ This step establishes the connection between:
 
 After counting how many intersecting directions belong to each boundary tag, the node is classified into one of two categories.
 
-### Edge nodes
-
 If a fluid node is associated with an opening but not with the wall, it is stored as an **edge node** of that opening.
 
 These nodes are useful for:
 
 - applying opening-related boundary conditions
 - computing opening-averaged quantities
-
-### Corner nodes
 
 If a fluid node is influenced by both the wall and an opening, it is classified as a **corner node**.
 
@@ -151,21 +147,21 @@ This distinction is useful because corner nodes are geometrically special: they 
 
 The class stores the collected nodes in several containers.
 
-### `edgeNodes`
+`edgeNodes`
 
 This is a vector of vectors:
 
 - `edgeNodes[0]` stores wall edge nodes
 - `edgeNodes[1]`, `edgeNodes[2]`, ... store opening edge nodes according to boundary tags
 
-### `cornerNodes`
+`cornerNodes`
 
 This is also a vector of vectors:
 
 - `cornerNodes[iTag]` stores corner nodes associated with opening `iTag`
 - `cornerNodes[0]` is empty in the current definition
 
-### `tagBlock`
+`tagBlock`
 
 A scalar field is generated to store the tag of each collected node.  
 This block is especially useful for:
@@ -196,7 +192,7 @@ Several user-level functions are provided to make the extracted data easy to use
 
 Overall, `FluidEdgeFetcher3D` serves as a bridge between the triangulated surface description and the lattice representation of the fluid domain.
 
-### 2. OpenValueFetcher3D
+<div align="center"><strong>b. OpenValueFetcher3D</strong></div>
 
 **Purpose:**  
 Once the boundary-adjacent fluid nodes have been identified and tagged, `OpenValueFetcher3D` uses those tagged node sets to extract physically meaningful quantities at each opening.
