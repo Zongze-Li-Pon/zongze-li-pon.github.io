@@ -128,11 +128,11 @@ This step establishes the connection between:
 - the **surface mesh**
 - the **boundary tag** associated with a wall or opening
 
-**Edge Nodes and Corner Nodes** 
+**Edge Nodes and Corner Nodes**
 
 After counting how many intersecting directions belong to each boundary tag, the node is classified into one of two categories.
 
-**Edge nodes**
+### Edge nodes
 
 If a fluid node is associated with an opening but not with the wall, it is stored as an **edge node** of that opening.
 
@@ -141,7 +141,7 @@ These nodes are useful for:
 - applying opening-related boundary conditions
 - computing opening-averaged quantities
 
-**Corner nodes**
+### Corner nodes
 
 If a fluid node is influenced by both the wall and an opening, it is classified as a **corner node**.
 
@@ -151,21 +151,21 @@ This distinction is useful because corner nodes are geometrically special: they 
 
 The class stores the collected nodes in several containers.
 
-#### `edgeNodes`
+### `edgeNodes`
 
 This is a vector of vectors:
 
 - `edgeNodes[0]` stores wall edge nodes
 - `edgeNodes[1]`, `edgeNodes[2]`, ... store opening edge nodes according to boundary tags
 
-#### `cornerNodes`
+### `cornerNodes`
 
 This is also a vector of vectors:
 
 - `cornerNodes[iTag]` stores corner nodes associated with opening `iTag`
 - `cornerNodes[0]` is empty in the current definition
 
-#### `tagBlock`
+### `tagBlock`
 
 A scalar field is generated to store the tag of each collected node.  
 This block is especially useful for:
@@ -182,7 +182,7 @@ The class also provides a `getCornerBlock()` function, which generates a visuali
 
 This makes it easy to visually inspect the classification result.
 
-### User-Level Functions
+**User-Level Functions**
 
 Several user-level functions are provided to make the extracted data easy to use.
 
