@@ -462,21 +462,198 @@ This provides a transparent way to:
 - inspect differences between the two methods
 - choose the more appropriate output for specific hemodynamic analyses
 
-### 3. Interpolation Utility
+## 3. General-Purpose Interpolation Utility in Interpolation.cpp
 
-**File:** `Interpolation.cpp`
+Time-dependent waveform data appear frequently in scientific computing and engineering simulations.
 
-This module implements a standalone interpolation utility in C++.
+For example, one may know a quantity such as:
 
-Unlike Palabos-specific tools, this module is designed to be **fully reusable outside the framework**. It supports:
+- inlet velocity
+- outlet flow rate
+- prescribed displacement
+- any other time-varying signal
 
-- interpolation of time-dependent waveforms  
-- reconstruction of variables from prescribed signals  
-- user-defined order of accuracy  
+only at a set of discrete time points, while the solver needs its value at an arbitrary intermediate time.
 
-This is particularly useful for handling inlet/outlet boundary data and time-varying flow conditions.
+To address this, I implemented a small standalone interpolation utility in `Interpolation.cpp`.
+
+Unlike some of the other modules in this project, this file is **not specific to the Windkessel model, aortic flow, or even Palabos itself**.  
+It is written as a lightweight and reusable C++ utility that can be applied to **any problem involving interpolation of a known waveform**.
+
+The file currently provides three functions:
+
+- `interpNth(...)`
+- `interp1st(...)`
+- `interp2nd(...)`
+
+These functions are based on **Lagrange interpolation** and allow the user to reconstruct the value of a time-dependent variable at any specified time.
+
+<div align="center"><strong>a. Purpose of This Utility</strong></div>
+
+**Purpose:**  
+The goal of this file is to provide a simple interpolation tool for reconstructing a variable from a known waveform sampled at discrete time points.
+
+In this implementation, each waveform entry stores two values:
+
+- `waveform[i][0]`: time
+- `waveform[i][1]`: value of the variable at that time
+
+Given a target time `currentTime`, the interpolation function returns the estimated value of the waveform at that time.
+
+This is useful whenever:
+
+- the input data are known only at discrete points
+- the solver advances using a different time step
+- a continuous-in-time approximation is needed from sampled data
+
+Although this utility is used in the current project for time-dependent simulation input, its design is completely general and can be reused in many other applications.
+
+<div align="center"><strong>b. N-th Order Lagrange Interpolation</strong></div>
+
+The main function in this file is:
+
+- `interpNth(...)`
+
+This function performs **N-th order Lagrange interpolation**.
+
+The user specifies:
+
+- the waveform data
+- the current time
+- the interpolation order
+
+The function then selects a local group of data points and constructs the Lagrange interpolation polynomial to estimate the value at the requested time.
+
+Mathematically, the interpolated value is represented as
+
+$$
+f(x) = \sum_{\alpha=0}^{n} f_{\alpha} L_{\alpha}(x)
+$$
+
+where the Lagrange basis polynomial is
+
+$$
+L_{\alpha}(x) =
+\prod_{\substack{\beta=0 \\ \beta \neq \alpha}}^{n}
+\frac{x - x_{\beta}}{x_{\alpha} - x_{\beta}}
+$$
+
+Here:
+
+- $x$ is the target interpolation time
+- $x_{\alpha}$ are the known time points
+- $f_{\alpha}$ are the known waveform values
+
+The code evaluates these basis functions explicitly and sums their contributions to obtain the interpolated result.
 
 ---
+
+<div align="center"><strong>c. Local Interval Selection</strong></div>
+
+One practical aspect of the implementation is how the interpolation points are selected.
+
+For a given `currentTime`, the function scans the waveform and searches for the interval in which that time lies.
+
+Once a valid interval is found, the code uses the corresponding `(order + 1)` neighboring points to construct the interpolation polynomial.
+
+This makes the interpolation **local**, rather than using all data points globally.
+
+A local interpolation strategy is useful because it:
+
+- is simpler to implement
+- is computationally efficient for moderate waveform sizes
+- avoids constructing unnecessarily large global polynomials
+
+At the end of the waveform, where there may not be enough forward points available, the code automatically falls back to using the last `(order + 1)` points.
+
+This ensures that interpolation can still be performed near the end of the signal.
+
+---
+
+<div align="center"><strong>d. First-Order and Second-Order Convenience Functions</strong></div>
+
+To simplify common use cases, the file also provides two wrapper functions:
+
+- `interp1st(...)`
+- `interp2nd(...)`
+
+These are simply convenience interfaces built on top of `interpNth(...)`.
+
+Specifically:
+
+- `interp1st(...)` calls `interpNth(..., 1)`
+- `interp2nd(...)` calls `interpNth(..., 2)`
+
+This allows the user to directly request:
+
+- **first-order interpolation** (linear interpolation)
+- **second-order interpolation** (quadratic interpolation)
+
+without manually specifying the order every time.
+
+These wrappers make the code easier to read and reduce repetitive function calls in the main solver.
+
+---
+
+<div align="center"><strong>e. Why This Utility Is Useful</strong></div>
+
+Although the interpolation code itself is relatively compact, it plays a practical role in many simulation workflows.
+
+In numerical simulations, waveform data often come from:
+
+- measurement data
+- prescribed boundary conditions
+- previous simulations
+- reduced-order models
+- tabulated control inputs
+
+Such data are rarely sampled exactly at the solver time step.
+
+Therefore, an interpolation layer is often needed to provide consistent values at arbitrary times during time marching.
+
+This utility provides that functionality in a form that is:
+
+- lightweight
+- easy to reuse
+- independent of any particular CFD framework
+
+Because it has no Palabos-specific dependency, it can also be copied directly into other projects whenever a simple waveform interpolation module is needed.
+
+---
+
+<div align="center"><strong>f. Generality Beyond This Project</strong></div>
+
+An important point is that `Interpolation.cpp` is **not written specifically for this aortic-flow / Windkessel project**.
+
+The same code can be used for any situation where:
+
+- a variable is known at discrete time points
+- the value is needed at intermediate times
+- the desired interpolation order can be chosen by the user
+
+Examples include:
+
+- prescribed inlet velocity profiles
+- moving-boundary motion input
+- actuator control signals
+- experimentally measured waveforms
+- any other time-series reconstruction task
+
+In this sense, the file is better viewed as a **general-purpose numerical utility**, rather than a project-specific module.
+
+---
+
+<div align="center"><strong>Summary</strong></div>
+
+`Interpolation.cpp` provides a small and reusable C++ implementation of Lagrange interpolation for waveform reconstruction.
+
+The three available functions are:
+
+- `interpNth(...)` for user-defined interpolation order
+- `interp1st(...)` for linear interpolation
+- `interp2nd(...)` for quadratic interpolation
+
+Although simple, this utility is broadly useful in simulation workflows that require time-dependent input reconstruction, and it can be reused in many contexts beyond the current project.
 
 ### 4. Three-Element Windkessel Model
 
