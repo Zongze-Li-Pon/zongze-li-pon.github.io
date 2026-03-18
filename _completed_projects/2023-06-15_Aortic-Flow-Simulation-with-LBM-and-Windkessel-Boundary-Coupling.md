@@ -1,5 +1,5 @@
 ---
-title: "Windkessel Parameter Estimation MATLAB Code"
+title: "Aortic Flow Simulation with LBM and Windkessel Boundary Coupling"
 date: 2023-06-15
 summary: "MATLAB tool for estimating Windkessel (WK3) model parameters by solving the governing ODE and using optimization to match target pressure waveforms, supporting multi-scale CFD simulations of cardiovascular flow."
 tags: [CFD, Biomedical Simulation, Windkessel Model, MATLAB, Numerical Methods]
@@ -86,7 +86,7 @@ To address this, I implemented two utility classes:
 
 These two classes work together to identify boundary-adjacent fluid nodes, classify them according to opening and wall information, and then use those tagged nodes to extract physically meaningful opening quantities such as **flow rate** and **average density**.
 
-### a. FluidEdgeFetcher3D
+<div align="center">a. FluidEdgeFetcher3D</div>
 
 **Purpose:**
 `FluidEdgeFetcher3D` is designed to locate and classify fluid nodes that lie next to the off-lattice triangulated boundary.
