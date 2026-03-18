@@ -612,6 +612,82 @@ This utility provides that functionality in a form that is:
 
 Because it has no Palabos-specific dependency, it can also be copied directly into other projects whenever a simple waveform interpolation module is needed.
 
+## 4. Windkessel Model Solver in WindkesselModel.cpp
+
+In cardiovascular simulations, reduced-order models are often used to represent the downstream vascular system beyond the computational domain.
+
+Among these models, the **Windkessel model** is one of the most widely used approaches for describing the relationship between:
+
+- flow rate  
+- pressure  
+- vascular compliance and resistance  
+
+In this project, I implemented a standalone Windkessel model solver in `WindkesselModel.cpp`.
+
+Although it is used here to couple with a Palabos-based CFD solver, this implementation is **completely independent of Palabos** and can be reused in any context involving:
+
+- time-dependent ODE integration  
+- flow–pressure coupling  
+- lumped-parameter cardiovascular modeling  
+
+<div align="center"><strong>a. Windkessel Model Formulation</strong></div>
+
+Three variants are implemented.
+
+**Two-element model (RC)**
+
+```
+dP/dt = Q/C - P/(R*C)
+```
+
+**Three-element model (RCR)**
+
+```
+dP/dt = (R1+R2)/(R2*C)*Q + R1*dQ/dt - P/(R2*C)
+```
+
+**Four-element model (RCRL)**
+
+```
+dP/dt = (R1+R2)/(R2*C)*Q 
+      + (R1 + L/(R2*C))*dQ/dt 
+      + L*d2Q/dt2 
+      - P/(R2*C)
+```
+
+<div align="center"><strong>b. Time Integration (RK4)</strong></div>
+
+```
+ΔP = dt/6 * (k1 + 2k2 + 2k3 + k4)
+```
+
+User can choose:
+
+- RK4 (stable, accurate)  
+- Euler (fast, less stable)  
+
+<div align="center"><strong>c. WindkesselModel3 Class</strong></div>
+
+**Key features:**
+
+- Multi-outlet support  
+- Flow history tracking  
+- Backward derivative (1st / 2nd order)  
+- Optional averaging  
+- RK4 or Euler  
+- Delay + ramp-up stabilization  
+
+<div align="center"><strong>d. Pressure Update Workflow</strong></div>
+
+Each time step:
+
+1. Update flow history  
+2. Compute averaged Q  
+3. Compute dQ/dt  
+4. Compute dP  
+5. Apply ramp-up  
+6. Update P  
+
 ### 5. Auxiliary Modules
 
 **Files:**
