@@ -636,35 +636,34 @@ Three variants are implemented.
 
 **Two-element model (RC)**
 
-```
-dP/dt = Q/C - P/(R*C)
-```
+$$
+\frac{dP}{dt} = \frac{Q}{C} - \frac{P}{R C}
+$$
 
 **Three-element model (RCR)**
 
-```
-dP/dt = (R1+R2)/(R2*C)*Q + R1*dQ/dt - P/(R2*C)
-```
+$$
+\frac{dP}{dt} =
+\frac{(R_1 + R_2)}{R_2 C} Q
++ R_1 \frac{dQ}{dt}
+- \frac{P}{R_2 C}
+$$
 
 **Four-element model (RCRL)**
 
-```
-dP/dt = (R1+R2)/(R2*C)*Q 
-      + (R1 + L/(R2*C))*dQ/dt 
-      + L*d2Q/dt2 
-      - P/(R2*C)
-```
+$$
+\frac{dP}{dt} =
+\frac{(R_1 + R_2)}{R_2 C} Q
++ \left(R_1 + \frac{L}{R_2 C}\right) \frac{dQ}{dt}
++ L \frac{d^2 Q}{dt^2}
+- \frac{P}{R_2 C}
+$$
 
 <div align="center"><strong>b. Time Integration (RK4)</strong></div>
 
-```
-ΔP = dt/6 * (k1 + 2k2 + 2k3 + k4)
-```
-
-User can choose:
-
-- RK4 (stable, accurate)  
-- Euler (fast, less stable)  
+$$
+\Delta P = \frac{dt}{6} \left(k_1 + 2k_2 + 2k_3 + k_4\right)
+$$
 
 <div align="center"><strong>c. WindkesselModel3 Class</strong></div>
 
