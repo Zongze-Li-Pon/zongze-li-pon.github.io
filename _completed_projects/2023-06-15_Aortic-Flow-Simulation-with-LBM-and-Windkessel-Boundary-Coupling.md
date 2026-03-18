@@ -63,7 +63,7 @@ palabos-aortic-flow-windkessel3/
 
 │ └── PostProcessingTools.cpp
 
-├── myScript
+├── myScript.cpp
 
 ├── param.xml
 
@@ -278,21 +278,257 @@ They provide:
 
 In other words, these utilities make it much easier to connect the geometric representation of vascular outlets with the lattice-based field data required for reduced-order boundary modeling.
 
-## 2. Surface Force Evaluation
+## 2. Custom Surface Force Evaluation in SurfaceForceTools.cpp
 
-**File:** `SurfaceForceTools.cpp`
+In patient-specific vascular simulations with **off-lattice boundaries**, evaluating wall quantities such as **surface force**, **pressure**, and **wall shear stress (WSS)** is an important part of the post-processing workflow.
 
-This module provides a modified implementation for computing surface forces based on the Palabos framework.
+Palabos already provides a built-in method for computing surface force on triangulated boundaries. However, when the geometry is complex and the simulation is performed as an **internal-flow problem**, the interpolation stencil around a boundary vertex may include lattice cells that do not belong to the active fluid region.
 
-Compared to the default implementation, this version is designed to:
+This may lead to less physically consistent interpolation near the wall, especially when some of the neighboring cells are outside the usable fluid domain.
 
-- improve flexibility for complex geometries  
-- integrate more naturally with custom boundary conditions  
-- support post-processing of forces on vascular surfaces  
+To address this, I implemented a customized surface-force evaluation method in `SurfaceForceTools.cpp`. The key idea is to modify the interpolation procedure so that only cells belonging to the current flow region are used in the force reconstruction.
 
-It is especially useful for analyzing hemodynamic quantities such as pressure distribution and wall forces.
+This file mainly contains three parts:
 
----
+- `ComputeParticleForce3DInnerborder`
+- `computeSurfaceForceInnerBorder(...)`
+- `writeSurF(...)`
+
+Together, these components provide a custom workflow for evaluating and exporting surface force information based only on **inner-border / usable fluid nodes**.
+
+<div align="center"><strong>a. ComputeParticleForce3DInnerborder</strong></div>
+
+**Purpose:**  
+`ComputeParticleForce3DInnerborder` is a customized processing functional that computes surface force at boundary vertices using only the subset of neighboring lattice cells that belong to the current flow region.
+
+Compared with the original Palabos implementation, which may use all eight surrounding nodes in 3D interpolation, this version only keeps cells whose voxel flags are:
+
+- `voxelFlag::bulkFlag(flowType)`
+- `voxelFlag::borderFlag(flowType)`
+
+In other words, the interpolation excludes neighboring cells that do not belong to the active fluid region.
+
+This is especially useful for internal-flow simulations, where the geometric neighborhood of a wall vertex may include cells outside the physically meaningful interpolation region.
+
+**Core Idea**
+
+The processor works on three input fields:
+
+- particle field
+- lattice field
+- voxel flag field
+
+For each particle attached to a mesh vertex, the code reconstructs local macroscopic quantities and computes the force acting on the wall.
+
+The logic can be summarized as follows.
+
+**Step 1 – Create particles on mesh vertices**
+
+The surface-force workflow first creates one visualization particle at each triangulated boundary vertex. These particles serve as carriers of wall-related quantities such as:
+
+- force vector
+- pressure
+- wall shear stress
+
+Each particle is tagged by its corresponding mesh vertex ID.
+
+**Step 2 – Build interpolation stencil**
+
+For a given boundary vertex, the code evaluates the interpolation coefficients associated with the surrounding lattice cells.
+
+In standard trilinear interpolation, up to 8 neighboring cells may contribute in 3D.
+
+However, not all of these cells are necessarily valid fluid cells for the current flow configuration.
+
+**Step 3 – Keep only usable cells**
+
+Each candidate interpolation cell is checked against the voxel flag field.
+
+Only cells marked as belonging to the current flow region are accepted:
+
+- bulk fluid cells
+- border fluid cells
+
+All other cells are discarded from the interpolation.
+
+This is the key modification compared with the original implementation.
+
+**Step 4 – Shift inward if necessary**
+
+If no usable cells are found at the initial boundary-vertex position, the code slightly shifts the evaluation point inward along the surface normal and retries the interpolation.
+
+This procedure is repeated for a few trials.
+
+The purpose of this step is to improve robustness near difficult geometric locations where the original vertex position does not immediately yield a valid interpolation stencil.
+
+**Step 5 – Reconstruct the local lattice state**
+
+Once a non-empty subset of usable cells is found, the code constructs an interpolated cell state at the vertex.
+
+Instead of using all 8 neighboring cells, the interpolated distribution is reconstructed only from the usable subset, and the weights are normalized accordingly.
+
+This ensures that the reconstructed state is based only on fluid cells relevant to the current domain.
+
+**Step 6 – Compute macroscopic quantities**
+
+After the interpolated cell state is obtained, the code computes:
+
+- density-related quantity
+- momentum
+- non-equilibrium stress tensor
+
+Using the local surface normal, it then evaluates the traction contribution associated with the vertex.
+
+From this, the following quantities are extracted:
+
+- surface force vector
+- pressure
+- wall shear stress (WSS)
+
+The wall force is obtained by applying Newton’s third law to the force acting on the fluid.
+
+**Fallback Handling**
+
+If no usable interpolation cells can be found even after several inward shifts, the code assigns fallback values:
+
+- zero wall force
+- default pressure
+- zero wall shear stress
+
+This prevents the program from failing at isolated problematic points and keeps the output field well-defined.
+
+**Why This Modification Matters**
+
+The main motivation of this customized implementation is that, in internal-flow simulations, the original interpolation stencil may contain cells outside the physically meaningful fluid region.
+
+By restricting interpolation to:
+
+- `bulkFlag(flowType)`
+- `borderFlag(flowType)`
+
+the reconstructed wall quantities become more consistent with the actual active flow domain.
+
+This is especially helpful for:
+
+- narrow vascular branches
+- highly curved wall regions
+- complex patient-specific outlet geometries
+
+where geometric interpolation near the wall can otherwise be sensitive to stencil contamination.
+
+<div align="center"><strong>b. computeSurfaceForceInnerBorder</strong></div>
+
+**Purpose:**  
+The function `computeSurfaceForceInnerBorder(...)` provides a higher-level interface for applying the customized surface-force processor to the full triangulated boundary.
+
+Its role is to generate a particle field carrying surface-force information computed by the inner-border-only method.
+
+Two overloads are provided:
+
+- one for the full computational domain
+- one for a user-specified sub-domain
+
+This makes the routine flexible for both global output and localized evaluation.
+
+**Workflow**
+
+The function performs the following steps:
+
+1. Select the appropriate boundary mesh  
+   - static open mesh
+   - dynamic open mesh
+
+2. Create a particle field associated with the lattice multi-block structure
+
+3. Generate one particle per boundary vertex using:
+   - `CreateParticleFromVertex3D`
+
+4. Apply the customized processor:
+   - `ComputeParticleForce3DInnerborder`
+
+5. Restore the original boundary selection
+
+The final output is a particle field in which each boundary vertex carries:
+
+- force vector
+- pressure
+- wall shear stress
+
+This particle-based representation is then ready for VTK export or further analysis.
+
+**Why a Separate Wrapper is Useful**
+
+Instead of directly embedding all logic into one function, this wrapper separates:
+
+- particle generation
+- processor application
+- mesh selection management
+
+This makes the code cleaner and easier to reuse in different post-processing workflows.
+
+<div align="center"><strong>c. writeSurF</strong></div>
+
+**Purpose:**  
+The function `writeSurF(...)` writes surface-force results into VTK files for visualization and comparison.
+
+An important feature of this function is that it outputs **two versions** of the surface-force result:
+
+1. the standard Palabos surface-force evaluation  
+2. the customized inner-border-only evaluation
+
+This side-by-side output is very useful for debugging, verification, and assessing the effect of the modified interpolation strategy.
+
+**Output Quantities**
+
+The exported fields include:
+
+- `pressure`
+- `wss`
+- `force(Pa)`
+
+Appropriate scaling factors are also applied using the unit-conversion object `GetParam<T>` so that the written quantities are expressed in physical units.
+
+**Workflow**
+
+The function first determines whether it is called during iteration or as a standalone post-processing step, and prints corresponding status information.
+
+It then writes:
+
+- one VTK file using the standard Palabos `computeSurfaceForce(...)`
+- one VTK file using the custom `computeSurfaceForceInnerBorder(...)`
+
+The custom result is written with an `"IB"` suffix in the filename, indicating the **inner-border-only** version.
+
+This naming convention makes it easy to compare the two outputs during post-processing.
+
+**Why This Output Function Matters**
+
+This function is not only a convenience wrapper for file writing. It also reflects an important design decision in the project:
+
+the customized implementation is intended to be compared directly with the standard Palabos result, rather than replacing it blindly.
+
+This provides a transparent way to:
+
+- validate the modified force evaluation
+- inspect differences between the two methods
+- choose the more appropriate output for specific hemodynamic analyses
+
+**Summary**
+
+`SurfaceForceTools.cpp` extends the original Palabos surface-force evaluation by introducing a more selective interpolation strategy near off-lattice boundaries.
+
+The three key components serve different roles:
+
+- `ComputeParticleForce3DInnerborder`  
+  performs the customized force reconstruction using only valid fluid-side cells
+
+- `computeSurfaceForceInnerBorder(...)`  
+  builds the corresponding particle-based surface-force field
+
+- `writeSurF(...)`  
+  exports both the standard and custom results for visualization and comparison
+
+Overall, this file improves the robustness and physical consistency of wall-quantity evaluation in complex internal-flow simulations, particularly for patient-specific vascular geometries.
 
 ### 3. Interpolation Utility
 
