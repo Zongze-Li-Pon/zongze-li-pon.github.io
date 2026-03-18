@@ -28,11 +28,8 @@ window.MathJax = {
 
 This project presents a C++ implementation of a **three-element Windkessel (WK3) model** coupled with a pressure boundary condition for **Lattice Boltzmann Method (LBM)** simulations, built upon the open-source framework [**Palabos**](https://palabos.unige.ch/).
 
-The full source code is available in the following repository:
+The full source code is available in the following repository: 👉 [**palabos-aortic-flow-windkessel3**](https://github.com/Zongze-Li-Pon/palabos-aortic-flow-windkessel3)
 
-👉 [**palabos-aortic-flow-windkessel3**](https://github.com/Zongze-Li-Pon/palabos-aortic-flow-windkessel3)
-
----
 
 In patient-specific hemodynamic simulations, prescribing realistic outlet boundary conditions is essential to capture the effect of downstream vasculature. The Windkessel model provides a reduced-order representation of vascular impedance and enables **multi-scale coupling between 0D lumped models and 3D CFD simulations**.
 
@@ -42,8 +39,6 @@ This code integrates the Windkessel model into the Palabos framework and extends
 - surface force evaluation on complex geometries
 - flexible data interpolation and waveform reconstruction
 
----
-
 Beyond the specific application to aortic flow simulation, the structure of this code is designed to be **modular and reusable**, allowing extension to other boundary conditions, solvers, and multi-physics problems.
 
 ---
@@ -52,11 +47,7 @@ Beyond the specific application to aortic flow simulation, the structure of this
 
 The codebase is organized into several modules, each designed with a specific functionality. The modular design allows individual components to be reused or extended independently.
 
----
-
-### 1. Fluid Edge Detection
-
-## FluidEdgeFetcher3D and OpenValueFetcher3D
+### FluidEdgeFetcher3D and OpenValueFetcher3D
 
 One important difficulty in patient-specific vascular simulations with **off-lattice boundary conditions** is that many opening-related quantities are not directly available in a convenient form.
 
