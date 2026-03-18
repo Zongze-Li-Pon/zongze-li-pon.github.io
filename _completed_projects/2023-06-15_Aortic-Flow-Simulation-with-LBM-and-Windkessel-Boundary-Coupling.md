@@ -77,7 +77,7 @@ palabos-aortic-flow-windkessel3/
 
 The codebase is organized into several modules, each designed with a specific functionality. The modular design allows individual components to be reused or extended independently.
 
-### 1. FluidEdgeFetcher3D and OpenValueFetcher3D in 
+### 1. FluidEdgeFetcher3D and OpenValueFetcher3D in FluidEdgeFetcher3D.cpp
 
 One important difficulty in patient-specific vascular simulations with **off-lattice boundary conditions** is that many opening-related quantities are not directly available in a convenient form.
 
@@ -90,9 +90,7 @@ To address this, I implemented two utility classes:
 
 These two classes work together to identify boundary-adjacent fluid nodes, classify them according to opening and wall information, and then use those tagged nodes to extract physically meaningful opening quantities such as **flow rate** and **average density**.
 
----
-
-### 1. FluidEdgeFetcher3D
+#### a. FluidEdgeFetcher3D
 
 **Purpose:**  
 `FluidEdgeFetcher3D` is designed to locate and classify fluid nodes that lie next to the off-lattice triangulated boundary.
@@ -101,13 +99,9 @@ Its design follows a strategy similar to the Palabos off-lattice treatment: for 
 
 If an intersection exists, the node is considered associated with the corresponding boundary surface.
 
----
-
-### Core Idea
-
 The logic of `FluidEdgeFetcher3D` can be summarized as follows.
 
-#### Step 1 – Scan the voxelized domain
+##### Step 1 – Scan the voxelized domain
 
 The constructor loops over the voxelized computational domain and searches for cells marked as **border nodes** in the voxel matrix.
 
