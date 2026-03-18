@@ -1,8 +1,8 @@
 ---
 title: "Aortic Flow Simulation with LBM and Windkessel Boundary Coupling"
 date: 2023-06-15
-summary: "MATLAB tool for estimating Windkessel (WK3) model parameters by solving the governing ODE and using optimization to match target pressure waveforms, supporting multi-scale CFD simulations of cardiovascular flow."
-tags: [CFD, Biomedical Simulation, Windkessel Model, MATLAB, Numerical Methods]
+summary: "C++ implementation of a multi-outlet Windkessel (RCR) boundary condition coupled with Lattice Boltzmann Method (LBM) using Palabos, featuring off-lattice boundary handling, surface force evaluation, and reusable interpolation utilities for cardiovascular CFD simulations."
+tags: [CFD,LBM,Palabos,Hemodynamics,Biomedical Engineering,Windkessel Model,Multi-scale Modeling,Fluid-Structure Interaction,Numerical Methods,C++,Scientific Computing]
 ---
 
 <script>
@@ -687,24 +687,21 @@ Each time step:
 5. Apply ramp-up  
 6. Update P  
 
-### 5. Auxiliary Modules
+## 5. Any Other Modules
 
-**Files:**
-- `PostProcessingTools.cpp`  
-- `SimulationSetup.cpp`  
+These modules are introduced to improve code organization and readability. They are responsible for:
 
-These modules are introduced to improve code organization and readability.
-
-They are responsible for:
-
-- simulation setup and parameter initialization  
-- separation of numerical logic from workflow control  
-- post-processing and data handling  
+- simulation setup and parameter initialization
+- separation of numerical logic from workflow control
+- post-processing and data handling
 
 This separation ensures that the main solver remains clean and maintainable, while also making the code easier to extend.
 
----
+The remaining source files and the main driver script are relatively straightforward and follow standard implementation patterns, so they are not discussed in detail here.
 
+## Final Remarks
+
+I hope this overview provides a clear understanding of the design and implementation of the project. If you are interested in the details or have any questions, feel free to reach out or explore the code further.
 
 <a href="/completed-projects.html">← Back to Completed Projects</a>
 
