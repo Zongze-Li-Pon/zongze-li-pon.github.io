@@ -132,9 +132,7 @@ This step establishes the connection between:
 - the **surface mesh**
 - the **boundary tag** associated with a wall or opening
 
----
-
-### Edge Nodes and Corner Nodes
+**Edge Nodes and Corner Nodes** 
 
 After counting how many intersecting directions belong to each boundary tag, the node is classified into one of two categories.
 
@@ -152,8 +150,6 @@ These nodes are useful for:
 If a fluid node is influenced by both the wall and an opening, it is classified as a **corner node**.
 
 This distinction is useful because corner nodes are geometrically special: they lie near the junction between wall and opening surfaces, and treating them separately can improve clarity in both post-processing and boundary tagging.
-
----
 
 ### Data Structures
 
@@ -190,8 +186,6 @@ The class also provides a `getCornerBlock()` function, which generates a visuali
 
 This makes it easy to visually inspect the classification result.
 
----
-
 ### User-Level Functions
 
 Several user-level functions are provided to make the extracted data easy to use.
@@ -205,8 +199,6 @@ Several user-level functions are provided to make the extracted data easy to use
 - `getCornerBlock()` returns a visualization-ready scalar block
 
 Overall, `FluidEdgeFetcher3D` serves as a bridge between the triangulated surface description and the lattice representation of the fluid domain.
-
----
 
 ### 2. OpenValueFetcher3D
 
