@@ -107,7 +107,7 @@ The constructor loops over the voxelized computational domain and searches for c
 
 These border nodes are the most relevant candidates because they are located near the triangulated boundary and may participate in boundary-related operations.
 
-#### Step 2 – Keep only fluid nodes
+##### Step 2 – Keep only fluid nodes
 
 For each candidate location, the code first checks whether the current cell belongs to the fluid region. This is determined according to the selected flow type:
 
@@ -116,7 +116,7 @@ For each candidate location, the code first checks whether the current cell belo
 
 This makes the utility flexible enough to support either internal-flow or external-flow configurations.
 
-#### Step 3 – Detect boundary intersections
+##### Step 3 – Detect boundary intersections
 
 For each fluid node, the code loops over all lattice directions except the rest population.
 
