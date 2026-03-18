@@ -477,8 +477,7 @@ only at a set of discrete time points, while the solver needs its value at an ar
 
 To address this, I implemented a small standalone interpolation utility in `Interpolation.cpp`.
 
-Unlike some of the other modules in this project, this file is **not specific to the Windkessel model, aortic flow, or even Palabos itself**.  
-It is written as a lightweight and reusable C++ utility that can be applied to **any problem involving interpolation of a known waveform**.
+Unlike some of the other modules in this project, this file is **not specific to the Windkessel model, aortic flow, or even Palabos itself**. It is written as a lightweight and reusable C++ utility that can be applied to **any problem involving interpolation of a known waveform**.
 
 The file currently provides three functions:
 
@@ -546,8 +545,6 @@ Here:
 
 The code evaluates these basis functions explicitly and sums their contributions to obtain the interpolated result.
 
----
-
 <div align="center"><strong>c. Local Interval Selection</strong></div>
 
 One practical aspect of the implementation is how the interpolation points are selected.
@@ -567,8 +564,6 @@ A local interpolation strategy is useful because it:
 At the end of the waveform, where there may not be enough forward points available, the code automatically falls back to using the last `(order + 1)` points.
 
 This ensures that interpolation can still be performed near the end of the signal.
-
----
 
 <div align="center"><strong>d. First-Order and Second-Order Convenience Functions</strong></div>
 
@@ -593,8 +588,6 @@ without manually specifying the order every time.
 
 These wrappers make the code easier to read and reduce repetitive function calls in the main solver.
 
----
-
 <div align="center"><strong>e. Why This Utility Is Useful</strong></div>
 
 Although the interpolation code itself is relatively compact, it plays a practical role in many simulation workflows.
@@ -618,60 +611,6 @@ This utility provides that functionality in a form that is:
 - independent of any particular CFD framework
 
 Because it has no Palabos-specific dependency, it can also be copied directly into other projects whenever a simple waveform interpolation module is needed.
-
----
-
-<div align="center"><strong>f. Generality Beyond This Project</strong></div>
-
-An important point is that `Interpolation.cpp` is **not written specifically for this aortic-flow / Windkessel project**.
-
-The same code can be used for any situation where:
-
-- a variable is known at discrete time points
-- the value is needed at intermediate times
-- the desired interpolation order can be chosen by the user
-
-Examples include:
-
-- prescribed inlet velocity profiles
-- moving-boundary motion input
-- actuator control signals
-- experimentally measured waveforms
-- any other time-series reconstruction task
-
-In this sense, the file is better viewed as a **general-purpose numerical utility**, rather than a project-specific module.
-
----
-
-<div align="center"><strong>Summary</strong></div>
-
-`Interpolation.cpp` provides a small and reusable C++ implementation of Lagrange interpolation for waveform reconstruction.
-
-The three available functions are:
-
-- `interpNth(...)` for user-defined interpolation order
-- `interp1st(...)` for linear interpolation
-- `interp2nd(...)` for quadratic interpolation
-
-Although simple, this utility is broadly useful in simulation workflows that require time-dependent input reconstruction, and it can be reused in many contexts beyond the current project.
-
-### 4. Three-Element Windkessel Model
-
-**File:** `WindkesselModel.cpp`
-
-This module implements the **three-element Windkessel model (WK3)**.
-
-The model includes:
-
-- proximal resistance $R_c$  
-- distal resistance $R_p$  
-- compliance $C$  
-
-This implementation is independent of Palabos and can be reused in other CFD solvers or reduced-order modeling frameworks.
-
-Within this project, it is coupled with the pressure boundary condition to provide a physiologically realistic outlet model.
-
----
 
 ### 5. Auxiliary Modules
 
