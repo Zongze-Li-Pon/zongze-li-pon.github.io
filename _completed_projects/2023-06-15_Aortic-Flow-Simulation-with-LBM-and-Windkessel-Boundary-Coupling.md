@@ -43,11 +43,34 @@ Beyond the specific application to aortic flow simulation, the structure of this
 
 ---
 
-## Code Structure
+## Project Structure
+
+The repository is organized as follows:
+
+
+palabos-aortic-flow-windkessel-3/
+├── myTools/
+│ └── FluidEdgeFetcher3D.cpp
+│
+├── SurfaceForceTools.cpp
+├── Interpolation.cpp
+├── WindkesselModel.cpp
+│
+├── SimulationSetup.cpp
+├── PostProcessingTools.cpp
+│
+├── myScript
+├── param.xml
+├── CMakeLists.txt
+└── README.md
+
+---
+
+## Code
 
 The codebase is organized into several modules, each designed with a specific functionality. The modular design allows individual components to be reused or extended independently.
 
-### FluidEdgeFetcher3D and OpenValueFetcher3D
+### 1. FluidEdgeFetcher3D and OpenValueFetcher3D
 
 One important difficulty in patient-specific vascular simulations with **off-lattice boundary conditions** is that many opening-related quantities are not directly available in a convenient form.
 
