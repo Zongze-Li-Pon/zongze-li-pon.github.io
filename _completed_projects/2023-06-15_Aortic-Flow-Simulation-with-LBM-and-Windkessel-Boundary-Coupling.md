@@ -26,9 +26,11 @@ window.MathJax = {
 
 ## Introduction
 
-This project presents a C++ implementation of a **three-element Windkessel (WK3) model** coupled with a pressure boundary condition for **Lattice Boltzmann Method (LBM)** simulations, built upon the open-source framework [**Palabos**](https://palabos.unige.ch/).
+This project presents a C++ implementation of a **three-element Windkessel (WK3) model** coupled with a pressure boundary condition for **Lattice Boltzmann Method (LBM)** simulations, built upon the open-source framework [**Palabos**](https://www.sciencedirect.com/science/article/abs/pii/S0045793023001196).
 
-The full source code is available in the following repository: 👉 [**palabos-aortic-flow-windkessel3**](https://github.com/Zongze-Li-Pon/palabos-aortic-flow-windkessel3)
+The full source code is available in the following repository: [**palabos-aortic-flow-windkessel3**](https://github.com/Zongze-Li-Pon/palabos-aortic-flow-windkessel3)
+
+The paper can be acceess here: [**A fast approach to estimating Windkessel model parameters for patient-specific multi-scale CFD simulations of aortic flow**](https://github.com/Zongze-Li-Pon/palabos-aortic-flow-windkessel3)
 
 
 In patient-specific hemodynamic simulations, prescribing realistic outlet boundary conditions is essential to capture the effect of downstream vasculature. The Windkessel model provides a reduced-order representation of vascular impedance and enables **multi-scale coupling between 0D lumped models and 3D CFD simulations**.
