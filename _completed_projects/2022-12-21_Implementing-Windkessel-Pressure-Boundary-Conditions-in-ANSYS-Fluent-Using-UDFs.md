@@ -32,8 +32,7 @@ $$
 +
 R_c\frac{dQ(t)}{dt}
 $$
-
-
+From the above equation, it can be seen that the pressure increment at the next time step depends on both the instantaneous flow rate and its temporal derivative, while the Windkessel parameters $R_c$, $R_p$, and $C$ are assumed to be known constants. The flow rate at the current time step can be obtained by integrating the flux over all faces on the outlet cross-section. However, evaluating the flow-rate derivative requires the flow rate from the previous time step, which must therefore be stored in User-Defined Memory (UDM). The derivative can then be approximated using the following finite-difference expression:
 
 
 
