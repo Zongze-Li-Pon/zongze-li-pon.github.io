@@ -67,11 +67,63 @@ where:
 
 In Fluent, a **thread** represents a mesh zone, such as an inlet, outlet, wall, or fluid region. Understanding the concept of threads is essential for writing UDFs because most boundary operations are performed through them.
 
+After the UDF is successfully loaded, the name specified by `macroName` becomes available in the Fluent GUI and can be assigned to the desired boundary condition, like the following screenshot:
+
 <div style="text-align: center;">
-  <img src="your_figure.png" width="70%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/UDF-dialog-box.png" width="70%">
 </div>
 
-After the UDF is successfully loaded, the name specified by `macroName` becomes available in the Fluent GUI and can be assigned to the desired boundary condition.
+`thread` is provided by ANSYS Fluent. For example, when a `DEFINE_PROFILE` UDF is hooked to a boundary condition through the graphical user interface (GUI), Fluent automatically passes a pointer to the corresponding boundary zone (thread) [4]. This thread contains all mesh entities associated with that zone, such as faces and their related information. The user can then access and process these data within the UDF.
+
+`index` identifies the variable to be defined. The value of `index` is determined when the UDF is hooked to a variable in the boundary-condition dialog box. ANSYS Fluent subsequently passes this index to the UDF so that the function knows which variable (e.g., velocity, pressure, temperature, etc.) it should operate on.
+
+For example:
+
+```c
+DEFINE_PROFILE(boundary1, thread, index)
+{
+    face_t f;    // face_t is a Fluent data type representing a single face.
+
+    begin_f_loop(f, thread)    // Loop over all faces in the specified thread.
+    {
+        F_PROFILE(f, thread, index) = 1.0;
+        // Assign a value of 1.0 to the selected boundary variable on this face.
+        // F_PROFILE is typically used together with DEFINE_PROFILE.
+    }
+    end_f_loop(f, thread);    // End of face loop.
+}
+```
+
+In this example, the UDF loops over every face in the boundary zone represented by `thread` and assigns a constant value of `1.0` to the corresponding boundary variable identified by `index`.
+
+The other `DEFINE` macro used in this case is `DEFINE_EXECUTE_AT_END()`, which is executed at the end of each iteration for steady simulations or at the end of each time step for transient simulations.
+
+Unlike `DEFINE_PROFILE`, this macro does not take any input arguments and is not automatically provided with any domain or thread information. Therefore, the user must explicitly obtain the required domain and thread pointers within the UDF.
+
+In this work, we use the pressure-based coupled solver for transient flow simulations. The following figure illustrates the execution flow of ANSYS Fluent together with the UDFs used to achieve the Windkessel coupling.
+
+<div style="text-align: center;">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/excution-flow-of-ANSYS.png" width="80%">
+</div>
+
+We do not use the `User-Defined Adjust` or `User-Defined Properties` hooks in this implementation, and therefore these steps can be ignored in the flowchart above.
+
+During the `User-Defined Profile` stage, a `DEFINE_PROFILE` macro is assigned to each outlet boundary condition. At the end of each time step, the `DEFINE_EXECUTE_AT_END` macro is invoked to update the outlet pressure for the next time step, $P(t+\Delta t)$, and store the updated values in User-Defined Memory (UDM) [7].
+
+As an example, consider a case with five outlets. Since one UDM is required to store the pressure history for each outlet, five UDM locations are needed for pressure storage.
+
+Although Fluent provides macros for accessing cell-based quantities such as velocity and density from previous time steps, we did not find an equivalent macro for face-based quantities. Therefore, the flow rate on each face must be explicitly stored in UDM at the current time step and reused as the previous flow rate during the next time step.
+
+Consequently, a total of ten UDM locations are required in this implementation: five for storing outlet pressures and five for storing face-based flow-rate information. The following table summarizes the purpose of each UDM location.
+
+
+
+
+
+
+
+
+
 
 
 
