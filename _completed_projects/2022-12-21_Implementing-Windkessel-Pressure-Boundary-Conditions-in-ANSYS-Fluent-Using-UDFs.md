@@ -42,7 +42,36 @@ $$
 \frac{Q(t)-Q(t-\Delta t)}{\Delta t}
 $$
 
+ANSYS Fluent provides a large number of User-Defined Function (UDF) macros for customizing solver behavior. Readers interested in additional macros and their functionalities are referred to the Fluent UDF Manual [2].
 
+Macros whose names begin with `DEFINE_XXXX` are special macros that expand into function definitions during preprocessing. Therefore, they cannot be nested within other `DEFINE_XXXX` macros [3] (i.e., placing one `DEFINE` macro inside another `DEFINE` macro). In contrast, most non-`DEFINE` macros provided in the manual can be invoked anywhere within a UDF.
+
+In the present implementation, only two `DEFINE` macros are required:
+
+- `DEFINE_PROFILE`
+- `DEFINE_EXECUTE_AT_END`
+
+`DEFINE_PROFILE` is used to prescribe boundary-condition profiles, such as velocity or pressure boundary conditions.
+
+Its syntax is
+
+```c
+DEFINE_PROFILE(macroName, thread, index)
+```
+
+where:
+
+- `macroName`: the name of the UDF. After the UDF is interpreted or compiled in Fluent, this name will appear in the corresponding boundary-condition dialog box, as illustrated in the figure below.
+- `thread`: a pointer to the boundary zone (thread) to which the profile is applied.
+- `index`: an integer index specifying which variable of the boundary condition is being modified.
+
+In Fluent, a **thread** represents a mesh zone, such as an inlet, outlet, wall, or fluid region. Understanding the concept of threads is essential for writing UDFs because most boundary operations are performed through them.
+
+<div style="text-align: center;">
+  <img src="your_figure.png" width="70%">
+</div>
+
+After the UDF is successfully loaded, the name specified by `macroName` becomes available in the Fluent GUI and can be assigned to the desired boundary condition.
 
 
 
