@@ -100,7 +100,7 @@ The other `DEFINE` macro used in this case is `DEFINE_EXECUTE_AT_END()`, which i
 
 Unlike `DEFINE_PROFILE`, this macro does not take any input arguments and is not automatically provided with any domain or thread information. Therefore, the user must explicitly obtain the required domain and thread pointers within the UDF.
 
-In this work, we use the pressure-based coupled solver for transient flow simulations. The following figure illustrates the execution flow of ANSYS Fluent together with the UDFs used to achieve the Windkessel coupling.
+In this work, we use the pressure-based coupled solver for transient flow simulations. The following figure illustrates the execution flow of ANSYS Fluent together with the UDFs used to achieve the Windkessel coupling:
 
 <div style="text-align: center;">
   <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/excution-flow-of-ANSYS.png" width="80%">
@@ -112,17 +112,77 @@ During the `User-Defined Profile` stage, a `DEFINE_PROFILE` macro is assigned to
 
 As an example, consider a case with five outlets. Since one UDM is required to store the pressure history for each outlet, five UDM locations are needed for pressure storage.
 
-Although Fluent provides macros for accessing cell-based quantities such as velocity and density from previous time steps, we did not find an equivalent macro for face-based quantities. Therefore, the flow rate on each face must be explicitly stored in UDM at the current time step and reused as the previous flow rate during the next time step.
+Although Fluent provides macros for accessing cell-based quantities such as velocity and density from previous time steps, we did not find an equivalent macro for face-based quantities. Therefore, the flowrate on each face must be explicitly stored in UDM at the current time step and reused as the previous flowrate during the next time step.
 
 Consequently, a total of ten UDM locations are required in this implementation: five for storing outlet pressures and five for storing face-based flow-rate information. The following table summarizes the purpose of each UDM location.
 
+<div style="text-align: center;">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/aortic-geometry-with-branch-name.png" width="70%">
+</div>
 
+| UDM Location | Definition |
+|:------------:|:-----------|
+| 0 | RSA $Q(t-\Delta t)$ |
+| 1 | RCCA $Q(t-\Delta t)$ |
+| 2 | DAo $Q(t-\Delta t)$ |
+| 3 | LCCA $Q(t-\Delta t)$ |
+| 4 | LSA $Q(t-\Delta t)$ |
+| 5 | RSA $P(t+\Delta t)$ |
+| 6 | RCCA $P(t+\Delta t)$ |
+| 7 | DAo $P(t+\Delta t)$ |
+| 8 | LCCA $P(t+\Delta t)$ |
+| 9 | LSA $P(t+\Delta t)$ |
 
+After the UDF has been implemented (the complete source code is provided in [8]), it can be imported into ANSYS Fluent. UDFs can be loaded using either the **interpreted** or **compiled** approach. Readers interested in the differences between these two methods are referred to the Fluent UDF Manual.
 
+When using the compiled approach, it is recommended to replace `printf()` with `Message()`, especially for parallel simulations, as `Message()` provides more reliable output behavior in Fluent.
 
+The following figures illustrate how to load and hook the UDF into the simulation.
 
+<div style="text-align: center;">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/use-the-interpreted-approach-to-import-the-UDF.png" width="70%">
+</div>
 
+<div style="text-align: center;">
+  Use the interpreted approach to import the UDF.
+</div>
 
+<br>
+
+<div style="text-align: center;">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/hook-the-macro.png" width="70%">
+</div>
+
+<div style="text-align: center;">
+  Hook the `DEFINE_PROFILE` macro to the corresponding pressure outlet boundary condition.
+</div>
+
+<br>
+
+<div style="text-align: center;">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/choose-execute-at-end.png" width="50%">
+</div>
+
+<div style="text-align: center;">
+  Go to <strong>User-Defined → Function Hooks</strong>, click <strong>Edit...</strong> under <strong>Execute at End</strong>, and select `updateUDMs` (the `DEFINE_EXECUTE_AT_END` macro).
+</div>
+
+After the UDF has been successfully hooked, the Windkessel model is fully coupled with the transient CFD simulation.
+
+The source code is provided in [8]. To adapt it to your own case, users may need to modify the following parameters:
+
+- `R1Clinical`
+- `R2Clinical`
+- `CClinical`
+- the outlet names (e.g., `ic`, `cm`, `mg`, etc.)
+
+In addition, the thread IDs associated with the outlet boundaries must be updated to match those in your Fluent case. If your model contains a different number of outlets, corresponding modifications to the `DEFINE_PROFILE` macros and UDM assignments are also required.
+
+Finally, we examine the simulation results. By coupling the Windkessel model with the CFD solver, physiologically realistic flow distributions among the outlets are successfully achieved. The predicted pressure waveform at the ascending aorta (AAo) generally agrees with physiological expectations. However, the AAo pressure waveform exhibits small numerical artifacts during the systolic upstroke. These features are likely related to limited temporal or spatial resolution, although further investigation is required to identify their exact cause.
+
+<div style="text-align: center;">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/result.png" width="80%%">
+</div>
 
 
 
