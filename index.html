@@ -237,7 +237,7 @@
 
         <div class="bottom-section">
             <div class="section-title">FEATURED WORKS</div>
-            <p style="text-align: center;"><strong>LBM FSI Modeling of Cuvierina Atlantica (Sea Butterfly) Propulsion Powered by MPI Parallel Computing</strong></p>
+            <p style="text-align: center;"><strong>MPI-Accelerated LBM–FSI Simulation of Sea Butterfly Propulsion</strong></p>
             <!-- Flowchart -->
             <div class="flowchart-section">
                 <!-- Raw video -->
@@ -272,7 +272,10 @@
                     </div>
                 </div>
             </div>
-            <p>Experimental PIV techniques currently lack the resolution required to fully capture the hydrodynamics of the target organism. To address this, I employed fluid-structure interaction (FSI) modeling based on high-speed videos provided by <a href="https://www.murphyfluidslab.com/" target="_blank">Dr. Murphy's lab</a>. This approach enables reconstruction of detailed flow fields around the swimming <em>Cuvierina Atlantica</em>, including comprehensive velocity distributions, vorticity structures visualized by Q-criterion, and force measurements on both wings and body. For more details, please explore by clicking Complete Projects button above!</p>
+            <p>This fascinating organism swims in the intermediate Reynolds number regime, where fluid dynamics exhibit complex and intricate flow behaviors. Understanding its propulsion strategies can provide valuable insights for the design of bio-inspired underwater robots.</p>
+            <p>To investigate these mechanisms, we reconstructed the wing kinematics from high-speed experimental videos provided by <a href="https://www.murphyfluidslab.com/" target="_blank">Dr. Murphy's lab</a> and developed an in-house customized fluid-structure interaction (FSI) package based on Palabos. The framework incorporates fully coupled fluid-solid interaction and achieves stable simulations even for solid-to-fluid density ratios as low as 0.1.</p>
+            <p>Using MPI-parallelized simulations, we reconstructed detailed flow fields around the swimming Cuvierina Atlantica, including velocity distributions, vortex structures visualized by the Q-criterion, and hydrodynamic forces acting on both the wings and body. This work provides new insights into bio-inspired propulsion mechanisms and contributes to the development of next-generation underwater robotic systems.</p>
+            <p>This research was published in Physics of Fluids and was selected as a Scilight article. See news <a href="https://doi.org/10.1063/10.0043339" target="_blank">here</a></p>
         </div>
 
         <div class="bottom-section">
@@ -307,7 +310,9 @@
                     </div>
                 </div>
             </div>
-            <p>Cardiovascular health is vital to everyone, yet modern clinical imaging techniques often fall short in capturing the complex hemodynamics within the circulatory system. To address this gap, computational fluid dynamics (CFD) provides a powerful complementary tool, enabling detailed flow visualizations that can assist in clinical diagnosis. In this work, we demonstrate that with only four key patient-specific inputs — aortic geometry, inlet flow rate, systolic/diastolic blood pressure, and flow distribution ratio at outlets — we can simulate the full aortic hemodynamics with high fidelity. The resulting visualizations include velocity fields, wall shear stress distributions, and λ₂ vortex structures colored by velocity magnitude, offering rich insight into the patient’s cardiovascular flow behavior. For more details, please explore by clicking Complete Projects button above!</p>
+            <p>Cardiovascular diseases remain one of the leading health concerns worldwide, yet modern clinical imaging techniques often lack the resolution needed to fully characterize the complex hemodynamics within the circulatory system. Computational fluid dynamics (CFD) offers a powerful complementary approach, enabling detailed visualization and quantitative analysis of patient-specific blood flow.</p>
+            <p>In this work, we demonstrate that high-fidelity aortic hemodynamics can be reconstructed using only four patient-specific inputs: aortic geometry, inlet flow rate, systolic/diastolic blood pressure, and outlet flow distribution ratios. This efficient framework enables accurate simulation of patient-specific cardiovascular flows while requiring only routinely available clinical data.</p>
+            <p>The resulting simulations provide rich insight into cardiovascular function through detailed velocity fields, wall shear stress distributions, and λ₂ vortex structures colored by velocity magnitude. Such computational tools have the potential to support clinical diagnosis, treatment planning, and personalized medicine.</p>
         </div>
 
     </div>
