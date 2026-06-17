@@ -24,6 +24,8 @@ window.MathJax = {
   </p>
 </div>
 
+## 1. Introduction
+
 The pressure boundary conditions provided in the ANSYS Fluent graphical user interface (GUI) primarily support constant values or predefined transient waveforms [1]. However, in many applications, the outlet pressure evolves dynamically in response to the instantaneous flowrate through the cross-section. In this work, we impose a pressure boundary condition whose value varies according to the following equation:
 
 $$
@@ -41,6 +43,8 @@ $$
 =
 \frac{Q(t)-Q(t-\Delta t)}{\Delta t}
 $$
+
+## 2. UDF Used in Current Work
 
 ANSYS Fluent provides a large number of User-Defined Function (UDF) macros for customizing solver behavior. Readers interested in additional macros and their functionalities are referred to the Fluent UDF Manual [2].
 
@@ -70,7 +74,7 @@ In Fluent, a **thread** represents a mesh zone, such as an inlet, outlet, wall, 
 After the UDF is successfully loaded, the name specified by `macroName` becomes available in the Fluent GUI and can be assigned to the desired boundary condition, like the following screenshot:
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/UDF-dialog-box.png" width="70%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/UDF-dialog-box.png" width="40%">
 </div>
 
 `thread` is provided by ANSYS Fluent. For example, when a `DEFINE_PROFILE` UDF is hooked to a boundary condition through the graphical user interface (GUI), Fluent automatically passes a pointer to the corresponding boundary zone (thread) [4]. This thread contains all mesh entities associated with that zone, such as faces and their related information. The user can then access and process these data within the UDF.
@@ -103,12 +107,14 @@ Unlike `DEFINE_PROFILE`, this macro does not take any input arguments and is not
 In this work, we use the pressure-based coupled solver for transient flow simulations. The following figure illustrates the execution flow of ANSYS Fluent together with the UDFs used to achieve the Windkessel coupling:
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/excution-flow-of-ANSYS.png" width="80%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/excution-flow-of-ANSYS.png" width="50%">
 </div>
 
 We do not use the `User-Defined Adjust` or `User-Defined Properties` hooks in this implementation, and therefore these steps can be ignored in the flowchart above.
 
 During the `User-Defined Profile` stage, a `DEFINE_PROFILE` macro is assigned to each outlet boundary condition. At the end of each time step, the `DEFINE_EXECUTE_AT_END` macro is invoked to update the outlet pressure for the next time step, $P(t+\Delta t)$, and store the updated values in User-Defined Memory (UDM) [7].
+
+## 3. Settings in ANSYS Fluent
 
 As an example, consider a case with five outlets. Since one UDM is required to store the pressure history for each outlet, five UDM locations are needed for pressure storage.
 
@@ -117,7 +123,7 @@ Although Fluent provides macros for accessing cell-based quantities such as velo
 Consequently, a total of ten UDM locations are required in this implementation: five for storing outlet pressures and five for storing face-based flow-rate information. The following table summarizes the purpose of each UDM location.
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/aortic-geometry-with-branch-name.png" width="70%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/aortic-geometry-with-branch-name.png" width="50%">
 </div>
 
 | UDM Location | Definition |
@@ -140,7 +146,7 @@ When using the compiled approach, it is recommended to replace `printf()` with `
 The following figures illustrate how to load and hook the UDF into the simulation.
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/use-the-interpreted-approach-to-import-the-UDF.png" width="70%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/use-the-interpreted-approach-to-import-the-UDF.png" width="40%">
 </div>
 
 <div style="text-align: center;">
@@ -150,7 +156,7 @@ The following figures illustrate how to load and hook the UDF into the simulatio
 <br>
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/hook-the-macro.png" width="70%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/hook-the-macro.png" width="40%">
 </div>
 
 <div style="text-align: center;">
@@ -160,7 +166,7 @@ The following figures illustrate how to load and hook the UDF into the simulatio
 <br>
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/choose-execute-at-end.png" width="50%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/choose-execute-at-end.png" width="40%">
 </div>
 
 <div style="text-align: center;">
@@ -184,7 +190,7 @@ Finally, we examine the simulation results. By coupling the Windkessel model wit
   <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/result.png" width="80%">
 </div>
 
-## References and Additional Notes
+## 4. References and Additional Notes
 
 ### [1] Importing a Transient Table into Fluent
 
@@ -249,7 +255,7 @@ or
 Once imported, the table becomes available for use in boundary-condition settings.
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/coomand-window.png" width="80%%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/comand-window.png" width="40%">
 </div>
 
 ---
@@ -303,7 +309,7 @@ Consider the aortic flow case shown in the figure below. The computational domai
 Once the case and mesh are generated, Fluent organizes the computational mesh into several hierarchical data structures, including **domain**, **thread**, **cell**, **face**, **node**, and **edge**, as illustrated below.
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/hierarchy.png" width="80%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/hierarchy.png" width="60%">
 </div>
 
 #### Domain
@@ -317,7 +323,7 @@ A **thread** represents a mesh zone in Fluent. A thread may correspond to a boun
 These thread IDs can be found in the Fluent GUI, as shown in the figure below.
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/thread-id.png" width="35%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/thread-id.png" width="25%">
 </div>
 
 Given a thread ID, the corresponding thread pointer can be obtained using the `Lookup_Thread()` macro [6]. Once the thread pointer is available, operations can be performed on the associated cells or faces.
@@ -382,7 +388,7 @@ User-Defined → Memory
 and specify the number of UDM locations required by the UDF.
 
 <div style="text-align: center;">
-  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/udm.png" width="50%">
+  <img src="/completed-projects/2022-12-21_Implementing-Windkessel-Pressure-Boundary-Conditions-in-ANSYS-Fluent-Using-UDFs/udm.png" width="30%">
 </div>
 
 Fluent provides several macros for accessing UDM values. Common examples include:
