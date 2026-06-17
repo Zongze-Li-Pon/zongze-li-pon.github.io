@@ -25,6 +25,7 @@ window.MathJax = {
 </div>
 
 The pressure boundary conditions provided in the ANSYS Fluent graphical user interface (GUI) primarily support constant values or predefined transient waveforms [1]. However, in many applications, the outlet pressure evolves dynamically in response to the instantaneous flowrate through the cross-section. In this work, we impose a pressure boundary condition whose value varies according to the following equation:
+
 $$
 \frac{dP(t)}{dt}
 =
@@ -32,7 +33,14 @@ $$
 +
 R_c\frac{dQ(t)}{dt}
 $$
-From the above equation, it can be seen that the pressure increment at the next time step depends on both the instantaneous flow rate and its temporal derivative, while the Windkessel parameters $R_c$, $R_p$, and $C$ are assumed to be known constants. The flow rate at the current time step can be obtained by integrating the flux over all faces on the outlet cross-section. However, evaluating the flow-rate derivative requires the flow rate from the previous time step, which must therefore be stored in User-Defined Memory (UDM). The derivative can then be approximated using the following finite-difference expression:
+
+From the above equation, it can be seen that the pressure increment at the next time step depends on both the instantaneous flowrate and its temporal derivative, while the Windkessel parameters $R_c$, $R_p$, and $C$ are assumed to be known constants. The flowrate at the current time step can be obtained by integrating the flux over all faces on the outlet cross-section. However, evaluating the flowrate derivative requires the flowrate from the previous time step, which must therefore be stored in User-Defined Memory (UDM). The derivative can then be approximated using the following finite-difference expression:
+
+$$
+\frac{dQ(t)}{dt}
+=
+\frac{Q(t)-Q(t-\Delta t)}{\Delta t}
+$$
 
 
 
